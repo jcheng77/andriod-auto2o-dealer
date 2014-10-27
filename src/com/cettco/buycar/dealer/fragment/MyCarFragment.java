@@ -23,7 +23,7 @@ import cn.trinea.android.common.entity.HttpResponse;
 import cn.trinea.android.common.service.HttpCache;
 import cn.trinea.android.common.service.HttpCache.HttpCacheListener;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.activity.AliPayActivity;
 import com.cettco.buycar.dealer.activity.OrderDetailActivity;
 import com.cettco.buycar.dealer.activity.OrderHasDealerActivity;

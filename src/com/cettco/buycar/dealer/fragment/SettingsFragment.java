@@ -1,6 +1,6 @@
 package com.cettco.buycar.dealer.fragment;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.activity.MainActivity;
 import com.cettco.buycar.dealer.activity.SignInActivity;
 import com.cettco.buycar.dealer.utils.UserUtil;

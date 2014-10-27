@@ -7,7 +7,7 @@ import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.entity.User;
 import com.cettco.buycar.dealer.entity.UserEntity;
 import com.cettco.buycar.dealer.utils.Data;

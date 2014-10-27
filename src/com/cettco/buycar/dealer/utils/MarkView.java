@@ -9,7 +9,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 
 public class MarkView extends FrameLayout {
 	private Button[] starButton;

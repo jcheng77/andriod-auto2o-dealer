@@ -2,7 +2,7 @@ package com.cettco.buycar.dealer.activity;
 
 import java.util.ArrayList;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.adapter.CarTrimViewPagerAdapter;
 
 import android.app.Activity;

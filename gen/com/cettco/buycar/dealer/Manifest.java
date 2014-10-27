@@ -5,12 +5,12 @@
  * should not be modified by hand.
  */
 
-package com.cettco.buycar;
+package com.cettco.buycar.dealer;
 
 public final class Manifest {
     public static final class permission {
         /**  Required 
          */
-        public static final String JPUSH_MESSAGE="com.cettco.buycar.permission.JPUSH_MESSAGE";
+        public static final String JPUSH_MESSAGE="com.cettco.buycar.dealer.permission.JPUSH_MESSAGE";
     }
 }

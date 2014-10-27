@@ -12,7 +12,7 @@ import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.adapter.MyOrderAdapter;
 import com.cettco.buycar.dealer.entity.OrderItemEntity;
 import com.cettco.buycar.dealer.utils.GlobalData;

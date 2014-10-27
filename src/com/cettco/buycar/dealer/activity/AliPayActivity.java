@@ -9,7 +9,7 @@ import com.alipay.android.app.sdk.AliPay;
 import com.alipay.android.msp.Keys;
 import com.alipay.android.msp.Result;
 import com.alipay.android.msp.Rsa;
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 
 import android.app.Activity;
 import android.content.Intent;

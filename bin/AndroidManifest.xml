@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cettco.buycar"
+    package="com.cettco.buycar.dealer"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -10,11 +10,11 @@
 
     <!-- Required -->
     <permission
-        android:name="com.cettco.buycar.permission.JPUSH_MESSAGE"
+        android:name="com.cettco.buycar.dealer.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
     <!-- Required -->
-    <uses-permission android:name="com.cettco.buycar.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="com.cettco.buycar.dealer.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -213,7 +213,7 @@
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
 
-                <category android:name="com.cettco.buycar" />
+                <category android:name="com.cettco.buycar.dealer" />
             </intent-filter>
         </receiver>
 

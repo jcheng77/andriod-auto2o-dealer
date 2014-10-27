@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.utils.GlobalData;
 import com.cettco.buycar.dealer.utils.HttpConnection;
 import com.google.gson.Gson;

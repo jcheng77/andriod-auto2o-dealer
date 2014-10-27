@@ -8,7 +8,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -29,7 +29,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 //import com.emenu.app.Data;
 //import com.emenu.app.R;
 //import com.emenu.app.entities.QROrderEntity;

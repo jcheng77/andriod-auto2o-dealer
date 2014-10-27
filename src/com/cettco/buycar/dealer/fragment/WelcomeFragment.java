@@ -5,7 +5,7 @@ import java.util.List;
 
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.activity.MyOrderActivity;
 import com.cettco.buycar.dealer.activity.OrderHasDealerActivity;
 

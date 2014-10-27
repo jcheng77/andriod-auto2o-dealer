@@ -1,46 +1,27 @@
 package com.cettco.buycar.dealer.activity;
 
-import java.util.ArrayList;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
 
-import cn.trinea.android.common.entity.HttpResponse;
 
-import com.cettco.buycar.R;
-import com.cettco.buycar.R.dimen;
-import com.cettco.buycar.R.drawable;
-import com.cettco.buycar.R.id;
-import com.cettco.buycar.R.layout;
-import com.cettco.buycar.R.menu;
-import com.cettco.buycar.dealer.entity.OrderItemEntity;
-import com.cettco.buycar.dealer.entity.OrderItemListEntity;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.fragment.MyCarFragment;
 import com.cettco.buycar.dealer.fragment.SettingsFragment;
 import com.cettco.buycar.dealer.fragment.WelcomeFragment;
-import com.cettco.buycar.dealer.utils.Data;
 import com.cettco.buycar.dealer.utils.HttpConnection;
-import com.cettco.buycar.dealer.utils.UserUtil;
-import com.google.gson.Gson;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.PersistentCookieStore;
-
-import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 

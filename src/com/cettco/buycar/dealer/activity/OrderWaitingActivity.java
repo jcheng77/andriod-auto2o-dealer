@@ -1,6 +1,6 @@
 package com.cettco.buycar.dealer.activity;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 
 import android.app.Activity;
 import android.os.Bundle;

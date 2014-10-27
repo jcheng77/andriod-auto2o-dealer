@@ -3,7 +3,7 @@ package com.cettco.buycar.dealer.adapter;
 
 import java.util.List;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.entity.OrderItemEntity;
 import com.cettco.buycar.dealer.utils.Data;
 

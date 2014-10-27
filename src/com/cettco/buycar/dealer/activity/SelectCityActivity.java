@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.cettco.buycar.R;
+import com.cettco.buycar.dealer.R;
 
 import android.app.Activity;
 import android.content.Context;
