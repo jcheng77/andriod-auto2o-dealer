@@ -6,6 +6,7 @@ import java.util.List;
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
 import com.cettco.buycar.dealer.R;
+import com.cettco.buycar.dealer.activity.MipcaActivityCapture;
 import com.cettco.buycar.dealer.activity.MyOrderActivity;
 import com.cettco.buycar.dealer.activity.OrderHasDealerActivity;
 
@@ -28,6 +29,7 @@ public class WelcomeFragment extends Fragment {
 	private WelcomePagerAdapter adapter;
 	private ArrayList<ImageView> arrayList;
 	private LinearLayout ordersLayout;
+	private LinearLayout scanLayout;
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class WelcomeFragment extends Fragment {
 				false);
 		ordersLayout = (LinearLayout)fragmentView.findViewById(R.id.fragment_welcome_orders_layout);
 		ordersLayout.setOnClickListener(ordersClickListener);
+		scanLayout = (LinearLayout)fragmentView.findViewById(R.id.fragment_welcome_scan_layout);
+		scanLayout.setOnClickListener(scanClickListener);
 		autoScrollViewPager = (AutoScrollViewPager)fragmentView.findViewById(R.id.welcome_view_pager);
 		autoScrollViewPager.setInterval(2000);
 		autoScrollViewPager.setCycle(true);
@@ -88,6 +92,16 @@ public class WelcomeFragment extends Fragment {
 			// TODO Auto-generated method stub
 			Intent intent = new Intent();
 			intent.setClass(getActivity(),MyOrderActivity.class);
+			startActivity(intent);
+		}
+	};
+private OnClickListener scanClickListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent();
+			intent.setClass(getActivity(),MipcaActivityCapture.class);
 			startActivity(intent);
 		}
 	};

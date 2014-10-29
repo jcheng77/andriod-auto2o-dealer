@@ -50,10 +50,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="10dp"
-                            android:text="Message" />
+                            android:text="订单" />
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/fragment_welcome_scan_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
@@ -71,7 +72,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="10dp"
-                            android:text="Message" />
+                            android:text="扫描" />
                     </LinearLayout>
                 </TableRow>
 
@@ -100,7 +101,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="10dp"
-                            android:text="Message" />
+                            android:text="订单" />
                     </LinearLayout>
 
                     <LinearLayout

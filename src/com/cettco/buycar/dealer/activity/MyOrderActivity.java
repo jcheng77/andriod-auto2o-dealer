@@ -219,5 +219,8 @@ public class MyOrderActivity extends Activity{
 			}
 		};
 	};
+	public void exitClick(View view){
+		this.finish();
+	}
 	
 }
