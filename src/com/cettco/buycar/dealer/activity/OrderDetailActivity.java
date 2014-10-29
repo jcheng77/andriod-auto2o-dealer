@@ -10,12 +10,14 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.utils.GlobalData;
@@ -25,18 +27,21 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 
 public class OrderDetailActivity extends Activity {
-	private Button scanButton;
+	private Button submitButton;
 	private Button accpetButton;
+	private TextView stateTextView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_detail);
-		scanButton = (Button)findViewById(R.id.order_detail_scan_btn);
-		scanButton.setOnClickListener(scanBtnClickListener);
+		submitButton = (Button)findViewById(R.id.order_detail_submit_btn);
+		submitButton.setOnClickListener(submitBtnClickListener);
 		accpetButton = (Button)findViewById(R.id.order_detail_accept_btn);
 		accpetButton.setOnClickListener(acceptBtnClickListener);
+		
+		stateTextView = (TextView)findViewById(R.id.order_detail_state_layout);
 	}
 
 	protected OnClickListener acceptBtnClickListener = new OnClickListener() {
@@ -47,7 +52,7 @@ public class OrderDetailActivity extends Activity {
 			
 		}
 	};
-	protected OnClickListener scanBtnClickListener = new OnClickListener() {
+	protected OnClickListener submitBtnClickListener = new OnClickListener() {
 
 		@Override
 		public void onClick(View arg0) {
@@ -62,13 +67,6 @@ public class OrderDetailActivity extends Activity {
 		String url = GlobalData.getBaseUrl() + "/tenders/"+"1"+".json";
 		Gson gson = new Gson();
 		StringEntity entity = null;
-		// try {
-		// System.out.println(gson.toJson(userEntity).toString());
-		// entity = new StringEntity(gson.toJson(userEntity).toString());
-		// } catch (UnsupportedEncodingException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
 		String cookieStr = null;
 		String cookieName = null;
 		PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
@@ -137,6 +135,26 @@ public class OrderDetailActivity extends Activity {
 
 		});
 
+	}
+	private void updateUI(){
+		String state="";
+		if(state.equals("111")){
+			stateTextView.setText("待接受订单");
+			stateTextView.setBackgroundColor(Color.parseColor("#FF6600"));
+			submitButton.setVisibility(View.GONE);
+			accpetButton.setVisibility(View.VISIBLE);
+		}else if(state.equals("111")){
+			stateTextView.setText("待提交详细信息");
+			stateTextView.setBackgroundColor(Color.parseColor("#FF6600"));
+			submitButton.setVisibility(View.VISIBLE);
+			accpetButton.setVisibility(View.GONE);
+		}
+		else if(state.equals("111")){
+			stateTextView.setText("接受订单成功");
+			stateTextView.setBackgroundColor(Color.parseColor("#FF6600"));
+			submitButton.setVisibility(View.GONE);
+			accpetButton.setVisibility(View.GONE);
+		}
 	}
 
 	private Handler mHandler = new Handler() {

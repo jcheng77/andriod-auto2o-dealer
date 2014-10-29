@@ -4,19 +4,41 @@
     android:layout_height="match_parent"
     android:background="@color/white" >
 
-    <include android:id="@+id/order_detail_actionbar"
+    <include
+        android:id="@+id/order_detail_actionbar"
         layout="@layout/actionbar" />
 
     <ScrollView
-        android:layout_below="@id/order_detail_actionbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_below="@id/order_detail_actionbar" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/order_detail_state_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/light_gray"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/my_order_status_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="待接受报价"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,10 +50,10 @@
                 android:gravity="center" >
 
                 <Button
-                    android:id="@+id/order_detail_scan_btn"
+                    android:id="@+id/order_detail_submit_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="扫描" />
+                    android:text="提交数据" />
 
                 <Button
                     android:id="@+id/order_detail_accept_btn"
