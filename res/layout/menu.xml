@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <LinearLayout
+   <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@color/slidingmenu"
@@ -82,29 +82,7 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:background="#ffffff" />
-        
-        <LinearLayout
-            android:id="@+id/accountLinearLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/slidingmenu_row_height"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" >
 
-            <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:padding="5dp"
-                android:src="@drawable/ic_action_settings" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:textColor="@color/slidingmenu_text"
-                android:padding="10dp"
-                android:text="我的车"
-                android:textSize="20sp" />
-        </LinearLayout>
 
         <ImageView
             android:layout_width="fill_parent"

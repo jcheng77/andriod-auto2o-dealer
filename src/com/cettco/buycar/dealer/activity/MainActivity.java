@@ -30,8 +30,6 @@ public class MainActivity extends Activity {
 	private LinearLayout settingLayout;
 	private ImageButton drawerButton;
 	private LinearLayout cityLayout;
-	private LinearLayout accountLayout;
-	private ImageButton addImageButton;
 	private TextView titleTextView;
 	
 	private LinearLayout welcomelLayout;
@@ -76,9 +74,6 @@ public class MainActivity extends Activity {
 		cityLayout = (LinearLayout) findViewById(R.id.selectCityLinearLayout);
 		cityLayout.setOnClickListener(selectCityClickListener);
 
-		accountLayout = (LinearLayout) findViewById(R.id.accountLinearLayout);
-		accountLayout.setOnClickListener(accountClickListener);
-
 		/*addImageButton = (ImageButton) findViewById(R.id.addCar_btn);
 		addImageButton.setOnClickListener(addCarClickListener);*/
 		
@@ -98,59 +93,7 @@ public class MainActivity extends Activity {
 		default:
 			break;
 		}
-		testJson();
 
-	}
-	void testJson(){
-//		DealerEntity entity = new DealerEntity();
-//		entity.setAddress("pudong");
-//		entity.setDetail1("test");
-//		entity.setDetail2("test");
-//		entity.setId("1");
-//		entity.setNakedPrice(1000);
-//		entity.setSpecialPrice(100);
-//		entity.setTotalPrice(10000);
-//		DealerListEntity dealerListEntity = new DealerListEntity();
-//		ArrayList<DealerEntity> tmpArrayList = new ArrayList<DealerEntity>();
-//		tmpArrayList.add(entity);
-//		dealerListEntity.setDealer(tmpArrayList);
-//		ArrayList<String> tmp2 = new ArrayList<String>();
-//		tmp2.add("step1");
-//		tmp2.add("step2");
-//		tmp2.add("step3");
-//		dealerListEntity.setStatus(tmp2);
-//		Gson gson = new Gson();
-//		String result = gson.toJson(dealerListEntity);
-//		System.out.println("dealer:"+result);
-//		OrderItemEntity itemEntity = new OrderItemEntity();
-//		itemEntity.setBidNum("4");
-//		itemEntity.setId("2");
-//		itemEntity.setName("volve");
-//		itemEntity.setPrice("10000");
-//		itemEntity.setStatus("4 4s bid");
-//		itemEntity.setTrim("智能版");
-//		ArrayList<OrderItemEntity> tmp = new ArrayList<OrderItemEntity>();
-//		tmp.add(itemEntity);
-//		
-//		OrderItemListEntity itemList = new OrderItemListEntity();
-//		itemList.setOrderitems(tmp);
-//		Gson gson = new Gson();
-//		String result = gson.toJson(itemList);
-//		System.out.println("itemlist:"+result);
-	}
-	protected void getData(){
-		String url = "";
-		HttpConnection.get(url, new JsonHttpResponseHandler(){
-
-			@Override
-			public void onSuccess(int statusCode, Header[] headers,
-					JSONObject response) {
-				// TODO Auto-generated method stub
-				super.onSuccess(statusCode, headers, response);
-				//Data.IMAGE_CACHE.get
-			}
-			
-		});
 	}
 	@Override
 	protected void onResume(){
@@ -168,25 +111,6 @@ public class MainActivity extends Activity {
 			break;
 		}
 	}
-//	protected OnClickListener logoutClickListener = new OnClickListener() {
-//		
-//		@Override
-//		public void onClick(View arg0) {
-//			// TODO Auto-generated method stub
-//			UserUtil.logout(MainActivity.this);
-//			PersistentCookieStore myCookieStore = new PersistentCookieStore(
-//					MainActivity.this);
-//			if(myCookieStore==null)return;
-//			myCookieStore.clear();
-//			switchFragment(new WelcomeFragment());
-//			setMyTitle("Welcome");
-//			logoutLayout.setVisibility(View.GONE);
-//			addImageButton.setVisibility(View.VISIBLE);
-//			Toast toast = Toast.makeText(MainActivity.this, "注销成功", Toast.LENGTH_SHORT);
-//			toast.show();
-//			//menu.toggle();
-//		}
-//	};
 	protected OnClickListener accountClickListener = new OnClickListener() {
 
 		@Override

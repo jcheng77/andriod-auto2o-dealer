@@ -8,7 +8,6 @@ import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.activity.MipcaActivityCapture;
 import com.cettco.buycar.dealer.activity.MyOrderActivity;
-import com.cettco.buycar.dealer.activity.OrderHasDealerActivity;
 
 
 import android.app.Fragment;

@@ -96,7 +96,7 @@ public class SignUpActivity extends Activity{
 			User user = new User();
 			user.setPhone(phone);
 			UserEntity userEntity = new UserEntity();
-			userEntity.setUser(user);
+			userEntity.setDealer(user);
 			Gson gson = new Gson();
 	        StringEntity entity = null;
 	        try {

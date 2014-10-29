@@ -65,14 +65,14 @@ public class SignInActivity extends Activity{
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			String url = GlobalData.getBaseUrl()+"/users/sign_in.json";
+			String url = GlobalData.getBaseUrl()+"/dealers/sign_in.json";
 			String phone = signinPhoneEditText.getText().toString();
 			String password = signinPasswordeEditText.getText().toString();
 			User user = new User();
 			user.setPhone(phone);
 			user.setPassword(password);
 			UserEntity userEntity = new UserEntity();
-			userEntity.setUser(user);
+			userEntity.setDealer(user);
 			Gson gson = new Gson();
 	        StringEntity entity = null;
 	        try {

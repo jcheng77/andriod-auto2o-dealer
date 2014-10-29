@@ -1,13 +1,13 @@
 package com.cettco.buycar.dealer.entity;
 
 public class UserEntity {
-	private User user;
-	
-	public User getUser() {
-		return user;
+	private User dealer;
+
+	public User getDealer() {
+		return dealer;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setDealer(User dealer) {
+		this.dealer = dealer;
 	}
 }

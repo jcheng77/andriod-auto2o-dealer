@@ -26,8 +26,6 @@ import cn.trinea.android.common.service.HttpCache.HttpCacheListener;
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.activity.AliPayActivity;
 import com.cettco.buycar.dealer.activity.OrderDetailActivity;
-import com.cettco.buycar.dealer.activity.OrderHasDealerActivity;
-import com.cettco.buycar.dealer.activity.OrderWaitingActivity;
 import com.cettco.buycar.dealer.activity.SignInActivity;
 import com.cettco.buycar.dealer.adapter.MyOrderAdapter;
 import com.cettco.buycar.dealer.entity.OrderItemEntity;
