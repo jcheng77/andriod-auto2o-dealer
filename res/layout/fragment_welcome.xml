@@ -37,6 +37,7 @@
                         android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:layout_marginRight="10dp"
+                        android:orientation="vertical"
                         android:background="#cccc33" >
 
                         <ImageView
@@ -54,6 +55,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:orientation="vertical"
                         android:id="@+id/fragment_welcome_scan_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -76,105 +78,7 @@
                     </LinearLayout>
                 </TableRow>
 
-                <TableRow
-                    android:gravity="center"
-                    android:paddingBottom="20dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="20dp" >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="0"
-                        android:layout_marginRight="10dp"
-                        android:background="#cccc33" >
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="10dp"
-                            android:text="订单" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:background="#cccc33" >
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="10dp"
-                            android:text="Message" />
-                    </LinearLayout>
-                </TableRow>
-
-                <TableRow
-                    android:gravity="center"
-                    android:paddingBottom="20dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="20dp" >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="0"
-                        android:layout_marginRight="10dp"
-                        android:background="#cccc33" >
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="10dp"
-                            android:text="Message" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:background="#cccc33" >
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="10dp"
-                            android:text="Message" />
-                    </LinearLayout>
-                </TableRow>
+               
             </TableLayout>
         </LinearLayout>
     </ScrollView>
