@@ -17,7 +17,7 @@
             <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
                 android:id="@+id/welcome_view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="300dp" />
 
             <TableLayout
                 android:layout_width="fill_parent"
@@ -38,20 +38,21 @@
                         android:layout_column="0"
                         android:layout_marginRight="10dp"
                         android:orientation="vertical"
-                        android:background="#cccc33" >
+                        android:background="#ff0033" >
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/ic_launcher" />
+                            android:background="@drawable/order" />
 
                         <TextView
+                            android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="10dp"
-                            android:text="订单" />
+                            android:text="我的订单" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -61,20 +62,21 @@
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_marginLeft="10dp"
-                        android:background="#cccc33" >
+                        android:background="#006600" >
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/ic_launcher" />
+                            android:background="@drawable/scan" />
 
                         <TextView
+                            android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="10dp"
-                            android:text="扫描" />
+                            android:text="扫描订单" />
                     </LinearLayout>
                 </TableRow>
 

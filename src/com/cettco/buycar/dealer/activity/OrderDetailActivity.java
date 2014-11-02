@@ -20,11 +20,8 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.TextView;
-=======
 import android.widget.ProgressBar;
->>>>>>> c209d4f
 
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.entity.OrderItemEntity;
@@ -39,12 +36,9 @@ import com.loopj.android.http.PersistentCookieStore;
 public class OrderDetailActivity extends Activity {
 	private Button submitButton;
 	private Button accpetButton;
-<<<<<<< HEAD
 	private TextView stateTextView;
-=======
 	private String bargain_id;
 	private ProgressBar progressBar;
->>>>>>> c209d4f
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +49,11 @@ public class OrderDetailActivity extends Activity {
 		submitButton.setOnClickListener(submitBtnClickListener);
 		accpetButton = (Button)findViewById(R.id.order_detail_accept_btn);
 		accpetButton.setOnClickListener(acceptBtnClickListener);
-<<<<<<< HEAD
 		
-		stateTextView = (TextView)findViewById(R.id.order_detail_state_layout);
-=======
+		stateTextView = (TextView)findViewById(R.id.order_detail_status_textview);
 		bargain_id = getIntent().getStringExtra("bargain_id");
 		progressBar = (ProgressBar)findViewById(R.id.order_detail_progressbar);
 		getData();
->>>>>>> c209d4f
 	}
 
 	protected OnClickListener acceptBtnClickListener = new OnClickListener() {
@@ -145,10 +136,9 @@ public class OrderDetailActivity extends Activity {
 //					}.getType();
 //					list = new Gson().fromJson(result, listType);
 //					//System.out.println("size:"+dealerList.size());
-//					Message message = new Message();
-//					message.what = 1;
-//					mHandler.sendMessage(message);
-					//System.out.println("result:"+result);
+					Message message = new Message();
+					message.what = 1;
+					mHandler.sendMessage(message);
 				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -185,6 +175,7 @@ public class OrderDetailActivity extends Activity {
 			case 1:
 				// updateTitle();
 				// adapter.notifyDataSetChanged();
+				updateUI();
 				break;
 			case 2:
 				// Toast toast = Toast.makeText(getActivity(), "获取订单失败",
