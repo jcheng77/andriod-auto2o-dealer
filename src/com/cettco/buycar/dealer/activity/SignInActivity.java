@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.entity.User;
 import com.cettco.buycar.dealer.entity.UserEntity;
-import com.cettco.buycar.dealer.utils.Data;
+import com.cettco.buycar.dealer.utils.MyApplication;
 import com.cettco.buycar.dealer.utils.GetLocation;
 import com.cettco.buycar.dealer.utils.GlobalData;
 import com.cettco.buycar.dealer.utils.HttpConnection;

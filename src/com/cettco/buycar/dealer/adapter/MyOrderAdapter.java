@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.entity.OrderItemEntity;
-import com.cettco.buycar.dealer.utils.Data;
+import com.cettco.buycar.dealer.utils.MyApplication;
 
 import android.content.Context;
 import android.graphics.Color;

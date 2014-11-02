@@ -10,7 +10,6 @@ encoding//src/com/cettco/buycar/dealer/activity/SignInActivity.java=UTF-8
 encoding//src/com/cettco/buycar/dealer/adapter/CarTrimViewPagerAdapter.java=UTF-8
 encoding//src/com/cettco/buycar/dealer/fragment/MyCarFragment.java=UTF-8
 encoding//src/com/cettco/buycar/dealer/fragment/SettingsFragment.java=UTF-8
-encoding//src/com/cettco/buycar/dealer/receiver/JPushReceiver.java=UTF-8
 encoding//src/com/cettco/buycar/dealer/utils/GetLocation.java=UTF-8
 encoding//src/com/cettco/buycar/dealer/utils/SFHCamera.java=UTF-8
 encoding//src/com/cettco/buycar/dealer/utils/db/DatabaseHelperOrder.java=UTF-8
