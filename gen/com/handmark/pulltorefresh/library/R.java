@@ -42,16 +42,20 @@ public final class R {
 		public static final int indicator_right_padding = 0x7f07001f;
 	}
 	public static final class drawable {
-		public static final int default_ptr_flip = 0x7f020060;
-		public static final int default_ptr_rotate = 0x7f020061;
-		public static final int indicator_arrow = 0x7f020079;
-		public static final int indicator_bg_bottom = 0x7f02007a;
-		public static final int indicator_bg_top = 0x7f02007b;
+		public static final int default_ptr_flip = 0x7f020061;
+		public static final int default_ptr_rotate = 0x7f020062;
+		public static final int indicator_arrow = 0x7f02007a;
+		public static final int indicator_bg_bottom = 0x7f02007b;
+		public static final int indicator_bg_top = 0x7f02007c;
 	}
 	public static final class id {
 		public static final int both = 0x7f0a0022;
 		public static final int disabled = 0x7f0a001f;
+<<<<<<< HEAD
 		public static final int fl_inner = 0x7f0a00b9;
+=======
+		public static final int fl_inner = 0x7f0a00ba;
+>>>>>>> c209d4f
 		public static final int flip = 0x7f0a0027;
 		public static final int gridview = 0x7f0a0028;
 		public static final int manualOnly = 0x7f0a0023;
@@ -59,10 +63,17 @@ public final class R {
 		public static final int pullFromEnd = 0x7f0a0021;
 		public static final int pullFromStart = 0x7f0a0020;
 		public static final int pullUpFromBottom = 0x7f0a0025;
+<<<<<<< HEAD
 		public static final int pull_to_refresh_image = 0x7f0a00ba;
 		public static final int pull_to_refresh_progress = 0x7f0a00bb;
 		public static final int pull_to_refresh_sub_text = 0x7f0a00bd;
 		public static final int pull_to_refresh_text = 0x7f0a00bc;
+=======
+		public static final int pull_to_refresh_image = 0x7f0a00bb;
+		public static final int pull_to_refresh_progress = 0x7f0a00bc;
+		public static final int pull_to_refresh_sub_text = 0x7f0a00be;
+		public static final int pull_to_refresh_text = 0x7f0a00bd;
+>>>>>>> c209d4f
 		public static final int rotate = 0x7f0a0026;
 		public static final int scrollview = 0x7f0a002a;
 		public static final int webview = 0x7f0a0029;

@@ -25,6 +25,15 @@ public class OrderItemEntity {
 	private String state;
 	@DatabaseField
 	private String url;
+	@DatabaseField
+	private String bargain_id;
+	
+	public String getBargain_id() {
+		return bargain_id;
+	}
+	public void setBargain_id(String bargain_id) {
+		this.bargain_id = bargain_id;
+	}
 	public String getUrl() {
 		return url;
 	}

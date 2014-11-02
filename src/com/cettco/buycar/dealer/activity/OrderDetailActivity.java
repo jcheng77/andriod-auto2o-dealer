@@ -1,5 +1,8 @@
 package com.cettco.buycar.dealer.activity;
 
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.Header;
@@ -17,19 +20,31 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.TextView;
+=======
+import android.widget.ProgressBar;
+>>>>>>> c209d4f
 
 import com.cettco.buycar.dealer.R;
+import com.cettco.buycar.dealer.entity.OrderItemEntity;
 import com.cettco.buycar.dealer.utils.GlobalData;
 import com.cettco.buycar.dealer.utils.HttpConnection;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 
 public class OrderDetailActivity extends Activity {
 	private Button submitButton;
 	private Button accpetButton;
+<<<<<<< HEAD
 	private TextView stateTextView;
+=======
+	private String bargain_id;
+	private ProgressBar progressBar;
+>>>>>>> c209d4f
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +55,14 @@ public class OrderDetailActivity extends Activity {
 		submitButton.setOnClickListener(submitBtnClickListener);
 		accpetButton = (Button)findViewById(R.id.order_detail_accept_btn);
 		accpetButton.setOnClickListener(acceptBtnClickListener);
+<<<<<<< HEAD
 		
 		stateTextView = (TextView)findViewById(R.id.order_detail_state_layout);
+=======
+		bargain_id = getIntent().getStringExtra("bargain_id");
+		progressBar = (ProgressBar)findViewById(R.id.order_detail_progressbar);
+		getData();
+>>>>>>> c209d4f
 	}
 
 	protected OnClickListener acceptBtnClickListener = new OnClickListener() {
@@ -63,8 +84,11 @@ public class OrderDetailActivity extends Activity {
 			startActivity(intent);
 		}
 	};
-	private void getData() {
-		String url = GlobalData.getBaseUrl() + "/tenders/"+"1"+".json";
+	protected void getData() {
+		// String url = GlobalData.getBaseUrl() + "/cars/list.json";
+		// httpCache.clear();
+		String url = GlobalData.getBaseUrl() + "/tenders/"+bargain_id+"/show_bargain.json";
+		System.out.println("url:"+url);
 		Gson gson = new Gson();
 		StringEntity entity = null;
 		String cookieStr = null;
@@ -91,50 +115,47 @@ public class OrderDetailActivity extends Activity {
 		}
 		HttpConnection.getClient().addHeader("Cookie",
 				cookieName + "=" + cookieStr);
-		HttpConnection.get(url, new JsonHttpResponseHandler() {
+		//HttpConnection.setCookie(getApplicationContext());
+		progressBar.setProgress(40);
+		HttpConnection.get(url,new AsyncHttpResponseHandler(){
 
 			@Override
-			public void onFailure(int statusCode, Header[] headers,
-					Throwable throwable, JSONObject errorResponse) {
+			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
+					Throwable arg3) {
 				// TODO Auto-generated method stub
-				super.onFailure(statusCode, headers, throwable, errorResponse);
-				// progressLayout.setVisibility(View.GONE);
-				System.out.println("error");
-				System.out.println("statusCode:" + statusCode);
-				System.out.println("headers:" + headers);
-				for (int i = 0; i < headers.length; i++) {
-					System.out.println(headers[i]);
-				}
-				System.out.println("response:" + errorResponse);
+				progressBar.setProgress(60);
+				progressBar.setProgress(100);
+				progressBar.setVisibility(View.GONE);
+				System.out.println("fail");
 				Message message = new Message();
 				message.what = 2;
 				mHandler.sendMessage(message);
-
 			}
 
 			@Override
-			public void onSuccess(int statusCode, Header[] headers,
-					JSONObject response) {
+			public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
 				// TODO Auto-generated method stub
-				super.onSuccess(statusCode, headers, response);
-				System.out.println("success");
-				System.out.println("statusCode:" + statusCode);
-				System.out.println("headers:" + headers);
-				System.out.println("response:" + response);
+				progressBar.setProgress(60);
+				progressBar.setProgress(100);
+				progressBar.setVisibility(View.GONE);
 				try {
-					String state=response.getString("state");
-					String[] stateArray = getResources().getStringArray(R.array.state);
-				} catch (JSONException e) {
+					String result= new String(arg2,"UTF-8");
+					System.out.println("result2:"+result);
+//					Type listType = new TypeToken<ArrayList<OrderItemEntity>>() {
+//					}.getType();
+//					list = new Gson().fromJson(result, listType);
+//					//System.out.println("size:"+dealerList.size());
+//					Message message = new Message();
+//					message.what = 1;
+//					mHandler.sendMessage(message);
+					//System.out.println("result:"+result);
+				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				// progressLayout.setVisibility(View.GONE);
-				// UserUtil.login(SignInActivity.this);
-
 			}
-
+			
 		});
-
 	}
 	private void updateUI(){
 		String state="";
