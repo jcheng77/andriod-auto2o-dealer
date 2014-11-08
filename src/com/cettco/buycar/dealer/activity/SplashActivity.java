@@ -2,6 +2,8 @@ package com.cettco.buycar.dealer.activity;
 
 import java.util.ArrayList;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.adapter.CarTrimViewPagerAdapter;
 
@@ -23,6 +25,7 @@ public class SplashActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
+		PushManager.startWork(getApplicationContext(),PushConstants.LOGIN_TYPE_API_KEY,BaiduPushUtils.getMetaValue(SplashActivity.this, "api_key"));
 		SharedPreferences settings = getSharedPreferences("installed", 0);
 		if (settings.getBoolean("first", true)) {
 			SharedPreferences.Editor editor = settings.edit();

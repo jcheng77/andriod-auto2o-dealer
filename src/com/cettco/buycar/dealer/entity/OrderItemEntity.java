@@ -1,5 +1,7 @@
 package com.cettco.buycar.dealer.entity;
 
+import java.util.Date;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -26,13 +28,54 @@ public class OrderItemEntity {
 	@DatabaseField
 	private String url;
 	@DatabaseField
+	private Date time;
+	@DatabaseField
+	private String pic_url;
+	public String getBid_id() {
+		return bid_id;
+	}
+	public void setBid_id(String bid_id) {
+		this.bid_id = bid_id;
+	}
+	public String getBider() {
+		return bider;
+	}
+	public void setBider(String bider) {
+		this.bider = bider;
+	}
+	@DatabaseField
+	private String model;
+	@DatabaseField
+	private String bid_id;
+	@DatabaseField
+	private String bider;
+	@DatabaseField
 	private String bargain_id;
-	
 	public String getBargain_id() {
 		return bargain_id;
 	}
 	public void setBargain_id(String bargain_id) {
 		this.bargain_id = bargain_id;
+	}
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	private String updated_at;
+	
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	public String getUpdated_at() {
+		return updated_at;
+	}
+	public void setUpdated_at(String updated_at) {
+		this.updated_at = updated_at;
 	}
 	public String getUrl() {
 		return url;
@@ -40,8 +83,6 @@ public class OrderItemEntity {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	@DatabaseField
-	private String pic_url;
 	public String getPic_url() {
 		return pic_url;
 	}

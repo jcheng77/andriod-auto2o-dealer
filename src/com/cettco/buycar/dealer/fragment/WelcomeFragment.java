@@ -40,7 +40,7 @@ public class WelcomeFragment extends Fragment {
 		scanLayout = (LinearLayout)fragmentView.findViewById(R.id.fragment_welcome_scan_layout);
 		scanLayout.setOnClickListener(scanClickListener);
 		autoScrollViewPager = (AutoScrollViewPager)fragmentView.findViewById(R.id.welcome_view_pager);
-		autoScrollViewPager.setInterval(2000);
+		autoScrollViewPager.setInterval(4000);
 		autoScrollViewPager.setCycle(true);
 		arrayList = new ArrayList<ImageView>();
 		adapter = new WelcomePagerAdapter(arrayList);

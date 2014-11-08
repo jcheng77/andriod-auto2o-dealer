@@ -43,37 +43,39 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class MyOrderActivity extends Activity{
+public class MyOrderActivity extends Activity {
 	private ListView listView;
-	//private PullToRefreshListView pullToRefreshView;
+	// private PullToRefreshListView pullToRefreshView;
 	private MyOrderAdapter adapter;
 	private List<OrderItemEntity> list = new ArrayList<OrderItemEntity>();
 	private ProgressBar progressBar;
-	//private LinearLayout mycarBgLayout;
+
+	// private LinearLayout mycarBgLayout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_order);
-		progressBar = (ProgressBar)findViewById(R.id.my_order_progressbar);
-		listView = (ListView)findViewById(R.id.orders_listview);
+		progressBar = (ProgressBar) findViewById(R.id.my_order_progressbar);
+		listView = (ListView) findViewById(R.id.orders_listview);
 		listView.setOnItemClickListener(itemClickListener);
-//		for (int i = 0; i < 5; i++) {
-//			OrderItemEntity entity = new OrderItemEntity();
-//			list.add(entity);
-//		}
-		adapter = new MyOrderAdapter(this, R.layout.item_my_order,
-				list);
+		// for (int i = 0; i < 5; i++) {
+		// OrderItemEntity entity = new OrderItemEntity();
+		// list.add(entity);
+		// }
+		adapter = new MyOrderAdapter(this, R.layout.item_my_order, list);
 		listView.setAdapter(adapter);
-		//adapter.updateList(list);
+		// adapter.updateList(list);
 		getData();
 	}
+
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 
 	}
+
 	protected OnItemClickListener itemClickListener = new OnItemClickListener() {
 
 		@Override
@@ -83,18 +85,39 @@ public class MyOrderActivity extends Activity{
 			int position = arg2;
 			OrderItemEntity orderItemEntity = list.get(position);
 			String state = orderItemEntity.getState();
-			System.out.println("order:"+state);
-			Intent intent = new Intent();
-			intent.setClass(MyOrderActivity.this,
-					OrderDetailActivity.class);
-			intent.putExtra("bargain_id", list.get(position).getBargain_id());
-			startActivity(intent);
+			String bider = orderItemEntity.getBider();
+			if (state.equals("qualified")) {
+				Intent intent = new Intent();
+				intent.setClass(MyOrderActivity.this, OrderDetailActivity.class);
+				intent.putExtra("bargain_id", list.get(position)
+						.getBargain_id());
+				intent.putExtra("id", list.get(position).getId());
+				intent.putExtra("bid_id", list.get(position).getBid_id());
+				startActivity(intent);
+			} else if (state.equals("taken") && bider.equals("you")) {
+				Intent intent = new Intent();
+				intent.setClass(MyOrderActivity.this, OrderDetailActivity.class);
+				intent.putExtra("bargain_id", list.get(position)
+						.getBargain_id());
+				intent.putExtra("id", list.get(position).getId());
+				intent.putExtra("bid_id", list.get(position).getBid_id());
+				startActivity(intent);
+			} else if (state.equals("deal_made") && bider.equals("you")) {
+				Intent intent = new Intent();
+				intent.setClass(MyOrderActivity.this, OrderDetailActivity.class);
+				intent.putExtra("bargain_id", list.get(position)
+						.getBargain_id());
+				intent.putExtra("id", list.get(position).getId());
+				intent.putExtra("bid_id", list.get(position).getBid_id());
+				startActivity(intent);
+			}
 
 		}
 	};
+
 	protected void getData() {
 		progressBar.setProgress(40);
-		String url=GlobalData.getBaseUrl()+"/tenders/dealer_index.json";
+		String url = GlobalData.getBaseUrl() + "/tenders/dealer_index.json";
 		Gson gson = new Gson();
 		StringEntity entity = null;
 		String cookieStr = null;
@@ -121,8 +144,8 @@ public class MyOrderActivity extends Activity{
 		}
 		HttpConnection.getClient().addHeader("Cookie",
 				cookieName + "=" + cookieStr);
-		//HttpConnection.setCookie(getApplicationContext());
-		HttpConnection.get(url,new AsyncHttpResponseHandler(){
+		// HttpConnection.setCookie(getApplicationContext());
+		HttpConnection.get(url, new AsyncHttpResponseHandler() {
 
 			@Override
 			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
@@ -138,22 +161,22 @@ public class MyOrderActivity extends Activity{
 				// TODO Auto-generated method stub
 				progressBar.setProgress(60);
 				try {
-					String result= new String(arg2,"UTF-8");
-					System.out.println("result:"+result);
+					String result = new String(arg2, "UTF-8");
+					System.out.println("result:" + result);
 					Type listType = new TypeToken<ArrayList<OrderItemEntity>>() {
 					}.getType();
 					list = new Gson().fromJson(result, listType);
-					//System.out.println("size:"+dealerList.size());
+					// System.out.println("size:"+dealerList.size());
 					Message message = new Message();
 					message.what = 1;
 					mHandler.sendMessage(message);
-					//System.out.println("result:"+result);
+					// System.out.println("result:"+result);
 				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			
+
 		});
 	}
 
@@ -175,8 +198,9 @@ public class MyOrderActivity extends Activity{
 			}
 		};
 	};
-	public void exitClick(View view){
+
+	public void exitClick(View view) {
 		this.finish();
 	}
-	
+
 }

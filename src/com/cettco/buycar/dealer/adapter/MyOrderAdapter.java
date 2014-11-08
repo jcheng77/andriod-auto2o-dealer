@@ -1,4 +1,3 @@
-
 package com.cettco.buycar.dealer.adapter;
 
 import java.util.List;
@@ -54,8 +53,10 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 					false);
 			holder.stateTextView = (TextView) convertView
 					.findViewById(R.id.my_order_status_textview);
-			holder.modeltextView = (TextView) convertView
-					.findViewById(R.id.my_order_model_textview);
+			holder.brandMakerModelTextView = (TextView) convertView
+					.findViewById(R.id.my_order_brandmakermodel_textview);
+			holder.trimTextView = (TextView) convertView
+					.findViewById(R.id.my_order_trim_textview);
 			holder.pricetextView = (TextView) convertView
 					.findViewById(R.id.my_order_price_textview);
 			holder.stateLayout = (LinearLayout) convertView
@@ -67,39 +68,61 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-//		OrderItemEntity entity = list.get(position);
-//		holder.modeltextView.setText(entity.getName());
-//		holder.pricetextView.setText(entity.getPrice());
-//		Data.IMAGE_CACHE.get(entity.getPic_url(), holder.imageView);
-//		System.out.println("state:"+entity.getState());
-//		if (entity.getState().equals("viewed")) {
-//			holder.stateTextView.setText("以看车型");
-//			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF6600"));
-//		} else if (entity.getState().equals("begain")) {
-//			holder.stateTextView.setText("决定购买车型");
-//			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
-//		} else if (entity.getState().equals("determined")) {
-//			holder.stateTextView.setText("已提交订单,待支付");
-//			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
-//		} else if (entity.getState().equals("qualified")) {
-//			holder.stateTextView.setText("已支付");
-//			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
-//		} else if (entity.getState().equals("timeout")) {
-//			holder.stateTextView.setText("超时");
-//			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
-//		} else if (entity.getState().equals("sumbitted")) {
-//			holder.stateTextView.setText("已有4s店接单");
-//			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
-//		} else if (entity.getState().equals("final_deal_closed")) {
-//			holder.stateTextView.setText("最终成交");
-//			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
-//		}
+		OrderItemEntity entity = list.get(position);
+		// System.out.println(entity.getPic_url());
+		String[] name_array = entity.getModel().split(" : ");
+		// System.out.println(name_array);
+		if (name_array.length == 5) {
+			holder.brandMakerModelTextView.setText(name_array[0] + " "
+					+ name_array[1] + " " + name_array[2]);
+			holder.trimTextView.setText(name_array[3]);
+		}
+		holder.pricetextView.setText(entity.getPrice());
+		MyApplication.IMAGE_CACHE.get(entity.getPic_url(), holder.imageView);
+		System.out.println("state:" + entity.getState());
+		// if (entity.getState().equals("viewed")) {
+		// holder.stateTextView.setText("以看车型");
+		// holder.stateLayout.setBackgroundColor(Color.parseColor("#FF6600"));
+		// } else if (entity.getState().equals("begain")) {
+		// holder.stateTextView.setText("决定购买车型");
+		// holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
+		// } else if (entity.getState().equals("determined")) {
+		// holder.stateTextView.setText("已提交订单,待支付");
+		// holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
+		// } else
+		if (entity.getState().equals("qualified")) {
+			holder.stateTextView.setText("等待抢单");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#ccff99"));
+		} else if (entity.getState().equals("taken")
+				&& entity.getBider().equals("you")) {
+			holder.stateTextView.setText("以抢单,待提交详情");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF6666"));
+		} else if (entity.getState().equals("taken")
+				&& !entity.getBider().equals("you")) {
+			holder.stateTextView.setText("已被别人抢单");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF6666"));
+		} else if (entity.getState().equals("timeout")) {
+			holder.stateTextView.setText("超时");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#669933"));
+		} else if (entity.getState().equals("deal_made")
+				&& entity.getBider().equals("you")) {
+			holder.stateTextView.setText("抢单成功");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#0099cc"));
+		} else if (entity.getState().equals("deal_made")
+				&& !entity.getBider().equals("you")) {
+			holder.stateTextView.setText("其他人抢单成功");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#0099cc"));
+		} else if (entity.getState().equals("final_deal_closed")) {
+			holder.stateTextView.setText("最终成交");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
+		}
 		return convertView;
 	}
 
 	private static class ViewHolder {
 		TextView stateTextView;
-		TextView modeltextView;
+		TextView brandMakerModelTextView;
+		TextView trimTextView;
 		TextView pricetextView;
 		LinearLayout stateLayout;
 		ImageView imageView;
