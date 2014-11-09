@@ -1,9 +1,15 @@
 package com.cettco.buycar.dealer.activity;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import org.apache.http.Header;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.entity.StringEntity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +24,7 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -30,6 +37,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.cettco.buycar.dealer.R;
+import com.cettco.buycar.dealer.entity.OrderItemEntity;
+import com.cettco.buycar.dealer.utils.GlobalData;
+import com.cettco.buycar.dealer.utils.HttpConnection;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 //import com.emenu.app.Data;
 //import com.emenu.app.R;
 //import com.emenu.app.entities.QROrderEntity;
@@ -37,7 +49,9 @@ import com.cettco.buycar.dealer.R;
 //import com.emenu.app.utils.HttpConnection;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.mining.app.zxing.camera.CameraManager;
 import com.mining.app.zxing.decoding.CaptureActivityHandler;
@@ -152,12 +166,13 @@ public class MipcaActivityCapture extends Activity implements Callback {
 			Toast.makeText(MipcaActivityCapture.this, "Scan failed!", Toast.LENGTH_SHORT).show();
 		}else {
 			Toast.makeText(MipcaActivityCapture.this, "正在解析二维码", Toast.LENGTH_LONG).show();
-			Intent resultIntent = new Intent();
-			Bundle bundle = new Bundle();
-			bundle.putString("result", resultString);
-			bundle.putParcelable("bitmap", barcode);
-			resultIntent.putExtras(bundle);
-			this.setResult(RESULT_OK, resultIntent);
+//			Intent resultIntent = new Intent();
+//			Bundle bundle = new Bundle();
+//			bundle.putString("result", resultString);
+//			bundle.putParcelable("bitmap", barcode);
+//			resultIntent.putExtras(bundle);
+//			this.setResult(RESULT_OK, resultIntent);
+			getData(resultString);
 		}
 		qrCodeString = resultString;
 		processResult(resultString);
@@ -270,6 +285,82 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		public void onCompletion(MediaPlayer mediaPlayer) {
 			mediaPlayer.seekTo(0);
 		}
+	};
+	protected void getData(String url){
+		Gson gson = new Gson();
+		StringEntity entity = null;
+		String cookieStr = null;
+		String cookieName = null;
+		PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
+		if (myCookieStore == null) {
+			System.out.println("cookie store null");
+			return;
+		}
+		List<Cookie> cookies = myCookieStore.getCookies();
+		for (Cookie cookie : cookies) {
+			String name = cookie.getName();
+			cookieName = name;
+			System.out.println(name);
+			if (name.equals("_JustBidIt_session")) {
+				cookieStr = cookie.getValue();
+				System.out.println("value:" + cookieStr);
+				break;
+			}
+		}
+		if (cookieStr == null || cookieStr.equals("")) {
+			System.out.println("cookie null");
+			return;
+		}
+		HttpConnection.getClient().addHeader("Cookie",
+				cookieName + "=" + cookieStr);
+		// HttpConnection.setCookie(getApplicationContext());
+		HttpConnection.get(url, new AsyncHttpResponseHandler() {
+
+			@Override
+			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
+					Throwable arg3) {
+				// TODO Auto-generated method stub
+				Message message = new Message();
+				message.what = 2;
+				mHandler.sendMessage(message);
+			}
+
+			@Override
+			public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
+				// TODO Auto-generated method stub
+				try {
+					String result = new String(arg2, "UTF-8");
+					System.out.println("result:" + result);
+					Message message = new Message();
+					message.what = 1;
+					mHandler.sendMessage(message);
+					// System.out.println("result:"+result);
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		});
+	}
+	private Handler mHandler = new Handler() {
+
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case 1:
+				Toast toast = Toast.makeText(MipcaActivityCapture.this, "解析成功,最终成交",
+						Toast.LENGTH_SHORT);
+				toast.show();
+				MipcaActivityCapture.this.finish();
+				break;
+			case 2:
+				Toast toast2 = Toast.makeText(MipcaActivityCapture.this, "解析失败，请重试",
+						Toast.LENGTH_SHORT);
+				toast2.show();
+				MipcaActivityCapture.this.finish();
+				break;
+			}
+		};
 	};
 
 }

@@ -265,6 +265,7 @@ public class OrderDetailActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		HttpConnection.getClient().addHeader("x-http-method-override","PATCH");
 		HttpConnection.getClient().addHeader("Cookie",
 				cookieName + "=" + cookieStr);
 		// HttpConnection.setCookie(getApplicationContext());
