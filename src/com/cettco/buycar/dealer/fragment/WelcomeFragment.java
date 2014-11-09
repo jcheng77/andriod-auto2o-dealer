@@ -8,6 +8,7 @@ import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.activity.MipcaActivityCapture;
 import com.cettco.buycar.dealer.activity.MyOrderActivity;
+import com.cettco.buycar.dealer.utils.UserUtil;
 
 
 import android.app.Fragment;
@@ -21,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class WelcomeFragment extends Fragment {
 	private View fragmentView;
@@ -89,6 +91,11 @@ public class WelcomeFragment extends Fragment {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			if(!UserUtil.isLogin(getActivity())){
+				Toast toast = Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT);
+				toast.show();
+				return;
+			}
 			Intent intent = new Intent();
 			intent.setClass(getActivity(),MyOrderActivity.class);
 			startActivity(intent);
@@ -99,6 +106,11 @@ private OnClickListener scanClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			if(!UserUtil.isLogin(getActivity())){
+				Toast toast = Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT);
+				toast.show();
+				return;
+			}
 			Intent intent = new Intent();
 			intent.setClass(getActivity(),MipcaActivityCapture.class);
 			startActivity(intent);
