@@ -91,11 +91,11 @@ public class WelcomeFragment extends Fragment {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			if(!UserUtil.isLogin(getActivity())){
-				Toast toast = Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT);
-				toast.show();
-				return;
-			}
+//			if(!UserUtil.isLogin(getActivity())){
+//				Toast toast = Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT);
+//				toast.show();
+//				return;
+//			}
 			Intent intent = new Intent();
 			intent.setClass(getActivity(),MyOrderActivity.class);
 			startActivity(intent);

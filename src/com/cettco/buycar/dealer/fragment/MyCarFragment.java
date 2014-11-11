@@ -88,6 +88,7 @@ public class MyCarFragment extends Fragment {
 				.findViewById(R.id.carlist_bg_layout);
 		pullToRefreshView = (PullToRefreshListView) fragmentView
 				.findViewById(R.id.pull_to_refresh_listview);
+		//pullToRefreshView.setonp
 		pullToRefreshView
 				.setOnRefreshListener(new OnRefreshListener<ListView>() {
 					@Override
@@ -98,6 +99,7 @@ public class MyCarFragment extends Fragment {
 					}
 
 				});
+		//pullToRefreshView.setonre
 		listView = pullToRefreshView.getRefreshableView();
 		listView.setOnItemClickListener(itemClickListener);
 //		for (int i = 0; i < 5; i++) {

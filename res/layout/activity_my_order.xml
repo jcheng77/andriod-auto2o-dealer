@@ -15,14 +15,10 @@
         android:layout_below="@id/activity_orders_actionbar"
         android:orientation="vertical" >
 
-        <cn.trinea.android.common.view.DropDownListView
-            android:id="@+id/orders_drop_down_listview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawSelectorOnTop="false"
-            listViewAttr:isAutoLoadOnBottom="false"
-            listViewAttr:isDropDownStyle="true"
-            listViewAttr:isOnBottomStyle="true" />
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/orders_pull_to_refresh_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
     </LinearLayout>
 
     <LinearLayout

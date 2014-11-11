@@ -22,6 +22,11 @@ import com.cettco.buycar.dealer.entity.OrderItemEntity;
 import com.cettco.buycar.dealer.utils.GlobalData;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.loopj.android.http.PersistentCookieStore;
 
 import android.app.Activity;
@@ -34,12 +39,13 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MyOrderActivity extends Activity {
-	private DropDownListView listView;
+	private PullToRefreshListView pullToRefreshListView;
 	// private PullToRefreshListView pullToRefreshView;
 	private MyOrderAdapter adapter;
 	private List<OrderItemEntity> list = new ArrayList<OrderItemEntity>();
@@ -51,73 +57,54 @@ public class MyOrderActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_order);
-		listView = (DropDownListView)findViewById(R.id.orders_drop_down_listview);
-		listView.setOnDropDownListener(new OnDropDownListener() {
-			
-			@Override
-			public void onDropDown() {
-				// TODO Auto-generated method stub
-				global_page=1;
-				new GetDataTask(true,1).execute();
-			}
-		});
-		listView.setOnBottomListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				new GetDataTask(false,global_page+1).execute();
-			}
-		});
+		pullToRefreshListView = (PullToRefreshListView)findViewById(R.id.orders_pull_to_refresh_listview);
+		pullToRefreshListView.setMode(Mode.BOTH);
+		pullToRefreshListView.setOnRefreshListener(new OnRefreshListener2<ListView>(){  
+			   
+            // 下拉Pulling Down  
+            @Override  
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {  
+                // 下拉的时候数据重置  
+            	new GetDataTask(1).execute();
+            }  
+              
+            // 上拉Pulling Up  
+            @Override  
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {  
+                // 上拉的时候添加选项   
+            	new GetDataTask(global_page+1).execute();
+            }  
+   
+        });
+		ListView listView = pullToRefreshListView.getRefreshableView();
 		listView.setOnItemClickListener(itemClickListener);
 		adapter = new MyOrderAdapter(this, R.layout.item_my_order, list);
 		listView.setAdapter(adapter);
 	}
-
+	
 	private class GetDataTask extends AsyncTask<Void, Void, String[]> {
-		 
-        private boolean isDropDown;
-        private int page;
- 
-        public GetDataTask(boolean isDropDown,int page){
-            this.isDropDown = isDropDown;
-            this.page = page;
-        }
- 
-        @Override
-        protected String[] doInBackground(Void... params) {
-            getData(page);
-            //return mStrings;
-            return null;
-        }
- 
-        @Override
-        protected void onPostExecute(String[] result) {
- 
-            if (isDropDown) {
-                //listItems.addFirst("Added after drop down");
-                adapter.notifyDataSetChanged();
- 
-                // should call onDropDownComplete function of DropDownListView at end of drop down complete.
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd HH:mm:ss");
-                listView.onDropDownComplete(getString(R.string.update_at)
-                                            + dateFormat.format(new Date()));
-            } else {
-                //listItems.add("Added after on bottom");
-                adapter.notifyDataSetChanged();
- 
-                // should call onBottomComplete function of DropDownListView at end of on bottom complete.
-                listView.onBottomComplete();
-            }
- 
-            super.onPostExecute(result);
-        }
-    }
+		private int page;
+		public GetDataTask(int page){
+	            this.page = page;
+	        }
+		@Override
+		protected void onPostExecute(String[] result) {
+			// Call onRefreshComplete when the list has been refreshed.
+			pullToRefreshListView.onRefreshComplete();
+			super.onPostExecute(result);
+		}
+
+		@Override
+		protected String[] doInBackground(Void... arg0) {
+			getData(page);
+			return null;
+		}
+	}
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		listView.onDropDown();
+		pullToRefreshListView.setRefreshing(true);
 
 	}
 
@@ -127,6 +114,8 @@ public class MyOrderActivity extends Activity {
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 			// TODO Auto-generated method stub
+			System.out.println("position:"+arg2);
+			if(list==null||list.size()==0)return;
 			int position = arg2-1;
 			OrderItemEntity orderItemEntity = list.get(position);
 			String state = orderItemEntity.getState();
@@ -191,13 +180,16 @@ public class MyOrderActivity extends Activity {
 			response = httpclient.execute(get);
 			int code = response.getStatusLine().getStatusCode();
 			if (code == 200) {
-				global_page=global_page+1;
 				String result = EntityUtils.toString(response.getEntity());
 				System.out.println("result:"+result);
 				Type listType = new TypeToken<ArrayList<OrderItemEntity>>() {
 				}.getType();
 				List<OrderItemEntity> tmpEntities = new Gson().fromJson(result, listType);
-				list.addAll(tmpEntities);
+				if(tmpEntities!=null){
+					global_page=global_page+1;
+					list.addAll(tmpEntities);
+				}
+				
 				Message message = new Message();
 				message.what = 1;
 				mHandler.sendMessage(message);
