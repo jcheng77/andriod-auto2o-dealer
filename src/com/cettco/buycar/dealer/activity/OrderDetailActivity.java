@@ -240,6 +240,10 @@ public class OrderDetailActivity extends Activity {
 		String miscFee = miscFeEditText.getText().toString();
 		String price = priceEditText.getText().toString();
 		String description = descriptionEditText.getText().toString();
+		if(insurance.equals("")||vehicleTax.equals("")||purchaseTax.equals("")||licenseFee.equals("")||miscFee.equals("")||price.equals("")||description.equals("")){
+			Toast toast = Toast.makeText(this, "有未填写数据", Toast.LENGTH_SHORT);
+			toast.show();
+		}
 		JSONObject bidJson = new JSONObject();
 		JSONObject json = new JSONObject();
 		try {

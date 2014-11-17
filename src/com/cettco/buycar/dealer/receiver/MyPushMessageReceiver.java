@@ -1,9 +1,12 @@
 package com.cettco.buycar.dealer.receiver;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.cookie.Cookie;
+import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,9 +16,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import com.cettco.buycar.dealer.activity.BaiduPushUtils;
 import com.cettco.buycar.dealer.activity.MainActivity;
+import com.cettco.buycar.dealer.utils.GlobalData;
+import com.cettco.buycar.dealer.utils.HttpConnection;
+import com.google.gson.Gson;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
 
 import com.baidu.frontia.api.FrontiaPushMessageReceiver;
-
+import org.apache.http.Header;
 /**
  * Push消息处理receiver。请编写您需要的回调函数， 一般来说： onBind是必须的，用来处理startWork返回值；
  * onMessage用来接收透传消息； onSetTags、onDelTags、onListTags是tag相关操作的回调；
@@ -61,14 +69,15 @@ public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
 				+ appid + " userId=" + userId + " channelId=" + channelId
 				+ " requestId=" + requestId;
 		Log.d(TAG, responseString);
-		System.out.println("response_id:"+responseString);
+		System.out.println("response_id:" + responseString);
 
 		// 绑定成功，设置已绑定flag，可以有效的减少不必要的绑定请求
 		if (errorCode == 0) {
 			BaiduPushUtils.setBind(context, true);
+			postData(context, userId, channelId);
 		}
 		// Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
-		//updateContent(context, responseString);
+		// updateContent(context, responseString);
 	}
 
 	/**
@@ -262,6 +271,88 @@ public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
 		intent.setClass(context.getApplicationContext(), MainActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.getApplicationContext().startActivity(intent);
+	}
+
+	private void postData(Context context, String userId, String channelId) {
+		String url = GlobalData.getBaseUrl() + "/devices.json";
+		JSONObject deviceJsonObject = new JSONObject();
+		JSONObject json = new JSONObject();
+		try {
+			deviceJsonObject.put("baidu_user_id", userId);
+			deviceJsonObject.put("baidu_channel_id", channelId);
+			json.put("type", "baidu_push");
+			json.put("device", deviceJsonObject);
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Gson gson = new Gson();
+		StringEntity entity = null;
+		try {
+			entity = new StringEntity(json.toString());
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String cookieStr = null;
+		String cookieName = null;
+		PersistentCookieStore myCookieStore = new PersistentCookieStore(context);
+		if (myCookieStore == null) {
+			System.out.println("cookie store null");
+			return;
+		}
+		List<Cookie> cookies = myCookieStore.getCookies();
+		for (Cookie cookie : cookies) {
+			String name = cookie.getName();
+			cookieName = name;
+			System.out.println(name);
+			if (name.equals("_JustBidIt_session")) {
+				cookieStr = cookie.getValue();
+				System.out.println("value:" + cookieStr);
+				break;
+			}
+		}
+		if (cookieStr == null || cookieStr.equals("")) {
+			System.out.println("cookie null");
+			return;
+		}
+		HttpConnection.getClient().addHeader("Cookie",
+				cookieName + "=" + cookieStr);
+		HttpConnection.post(context, url, null, entity,
+				"application/json;charset=utf-8",
+				new JsonHttpResponseHandler() {
+
+					@Override
+					public void onFailure(int statusCode, Header[] headers,
+							Throwable throwable, JSONObject errorResponse) {
+						// TODO Auto-generated method stub
+						super.onFailure(statusCode, headers, throwable,
+								errorResponse);
+						System.out.println("error");
+						System.out.println("statusCode:" + statusCode);
+						System.out.println("headers:" + headers);
+						// for(int i = 0;i<headers.length;i++){
+						// System.out.println(headers[i]);
+						// }
+						System.out.println("id response:" + errorResponse);
+					}
+
+					@Override
+					public void onSuccess(int statusCode, Header[] headers,
+							JSONObject response) {
+						// TODO Auto-generated method stub
+						super.onSuccess(statusCode, headers, response);
+						System.out.println("id success");
+						System.out.println("id statusCode:" + statusCode);
+
+						for (int i = 0; i < headers.length; i++) {
+							System.out.println(headers[0]);
+						}
+						System.out.println("id response:" + response);
+
+					}
+
+				});
 	}
 
 }
