@@ -175,7 +175,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="10000" />
+                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -196,7 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="10000" />
+                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -217,7 +217,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="10000" />
+                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,7 +238,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="10000" />
+                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -259,7 +259,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="10000" />
+                        android:text="" />
                 </LinearLayout>
             </LinearLayout>
 

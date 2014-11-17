@@ -405,11 +405,24 @@ public class OrderDetailActivity extends Activity {
 		if (name_array.length == 5) {
 			brandMakerModelTextView.setText(name_array[0] + " "+ name_array[1] + " " + name_array[2]);
 			trimTextView.setText(name_array[3]);
+			colorTextView.setText(name_array[4]);
 		}
 		pickupTimeTextView.setText(detailEntity.getPickup_time());
-		locationTextView.setText(detailEntity.getLoan_option());
-		gotLicenseTextView.setText(detailEntity.getGot_licence());
-		loanOptionTextView.setText(detailEntity.getLoan_option());
+		locationTextView.setText(detailEntity.getLicense_location());
+		if(detailEntity.getGot_licence().equals("0")){
+			gotLicenseTextView.setText("无");
+		}else if(detailEntity.getGot_licence().equals("1")){
+			gotLicenseTextView.setText("有");
+		}
+		
+		if(detailEntity.getLoan_option().equals("0")){
+			loanOptionTextView.setText("只选择贷款");
+		}else if(detailEntity.getLoan_option().equals("1")){
+			loanOptionTextView.setText(" 全款");
+		}else if(detailEntity.getLoan_option().equals("2")){
+			loanOptionTextView.setText("贷款或全款均可");
+		}
+		
 		String state = detailEntity.getState();
 		// qualified,timeout,submitted,deal_made,final_deal_closed
 		System.out.println("state:"+state);
