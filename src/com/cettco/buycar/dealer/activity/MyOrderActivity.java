@@ -41,6 +41,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -50,6 +51,8 @@ public class MyOrderActivity extends Activity {
 	private MyOrderAdapter adapter;
 	private List<OrderItemEntity> list = new ArrayList<OrderItemEntity>();
 	private int global_page=1;
+	
+	private TextView titleTextView;
 
 	// private LinearLayout mycarBgLayout;
 	@Override
@@ -57,6 +60,8 @@ public class MyOrderActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_order);
+		titleTextView = (TextView)findViewById(R.id.title_text);
+		titleTextView.setText("订单列表");
 		pullToRefreshListView = (PullToRefreshListView)findViewById(R.id.orders_pull_to_refresh_listview);
 		pullToRefreshListView.setMode(Mode.BOTH);
 		pullToRefreshListView.setOnRefreshListener(new OnRefreshListener2<ListView>(){  

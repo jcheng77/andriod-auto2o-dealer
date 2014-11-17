@@ -70,11 +70,14 @@ public class OrderDetailActivity extends Activity {
 	private TextView brandMakerModelTextView;
 	private TextView trimTextView;
 
+	private TextView titleTextView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_detail);
+		titleTextView = (TextView)findViewById(R.id.title_text);
+		titleTextView.setText("订单详情");
 		submitButton = (Button) findViewById(R.id.order_detail_submit_btn);
 		submitButton.setOnClickListener(submitBtnClickListener);
 		accpetButton = (Button) findViewById(R.id.order_detail_accept_btn);

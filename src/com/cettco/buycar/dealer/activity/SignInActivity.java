@@ -39,6 +39,7 @@ public class SignInActivity extends Activity{
 	private EditText signinPhoneEditText;
 	private EditText signinPasswordeEditText;
 	private RelativeLayout progressLayout;
+	private TextView titleTextView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -57,6 +58,9 @@ public class SignInActivity extends Activity{
 		signinPhoneEditText = (EditText)findViewById(R.id.signinPhoneEditText);
 		
 		progressLayout = (RelativeLayout)findViewById(R.id.progressbar_relativeLayout);
+		
+		titleTextView = (TextView)findViewById(R.id.title_text);
+		titleTextView.setText("登录");
 //		GetLocation location = new GetLocation();
 //		location.getLocation(this);
 	}
