@@ -54,7 +54,7 @@ public class OrderDetailActivity extends Activity {
 	private LinearLayout bidLayout;
 	
 	private EditText insurancEditText;
-	private EditText vechileTaxEditText;
+	//private EditText vechileTaxEditText;
 	private EditText purchaseEditText;
 	private EditText licenseFeEditText;
 	private EditText miscFeEditText;
@@ -94,7 +94,7 @@ public class OrderDetailActivity extends Activity {
 		bidLayout.setVisibility(View.GONE);
 		
 		insurancEditText =(EditText)findViewById(R.id.module_bid_insurance_edittext);
-		vechileTaxEditText = (EditText)findViewById(R.id.module_bid_vehicle_tax_edittext);
+		//vechileTaxEditText = (EditText)findViewById(R.id.module_bid_vehicle_tax_edittext);
 		purchaseEditText = (EditText)findViewById(R.id.module_bid_purchase_tax_edittext);
 		licenseFeEditText = (EditText)findViewById(R.id.module_bid_license_fee_edittext);
 		miscFeEditText = (EditText)findViewById(R.id.module_bid_mis_fee_edittext);
@@ -237,13 +237,13 @@ public class OrderDetailActivity extends Activity {
 		}
 		//String insurance = 
 		String insurance = insurancEditText.getText().toString();
-		String vehicleTax = vechileTaxEditText.getText().toString();
+		//String vehicleTax = vechileTaxEditText.getText().toString();
 		String purchaseTax = purchaseEditText.getText().toString();
 		String licenseFee = licenseFeEditText.getText().toString();
 		String miscFee = miscFeEditText.getText().toString();
 		String price = priceEditText.getText().toString();
 		String description = descriptionEditText.getText().toString();
-		if(insurance.equals("")||vehicleTax.equals("")||purchaseTax.equals("")||licenseFee.equals("")||miscFee.equals("")||price.equals("")||description.equals("")){
+		if(insurance.equals("")||purchaseTax.equals("")||licenseFee.equals("")||miscFee.equals("")||price.equals("")||description.equals("")){
 			Toast toast = Toast.makeText(this, "有未填写数据", Toast.LENGTH_SHORT);
 			toast.show();
 		}
@@ -251,7 +251,7 @@ public class OrderDetailActivity extends Activity {
 		JSONObject json = new JSONObject();
 		try {
 			bidJson.put("insurance", insurance);
-			bidJson.put("vehicle_tax", vehicleTax);
+			//bidJson.put("vehicle_tax", vehicleTax);
 			bidJson.put("purchase_tax", purchaseTax);
 			bidJson.put("license_fee", licenseFee);
 			bidJson.put("misc_fee", miscFee);

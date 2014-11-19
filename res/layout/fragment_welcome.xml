@@ -38,7 +38,7 @@
                         android:layout_column="0"
                         android:layout_marginRight="10dp"
                         android:orientation="vertical"
-                        android:background="#ff0033" >
+                        android:background="#f3f2f0" >
 
                         <ImageView
                             android:layout_marginTop="10dp"
@@ -48,7 +48,7 @@
                             android:background="@drawable/order" />
 
                         <TextView
-                            android:textColor="@color/white"
+                            android:textColor="#000000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_marginLeft="10dp"
-                        android:background="#006600" >
+                        android:background="#f3f2f0" >
 
                         <ImageView
                             android:layout_marginTop="10dp"
@@ -73,7 +73,7 @@
                             android:background="@drawable/scan" />
 
                         <TextView
-                            android:textColor="@color/white"
+                            android:textColor="#000000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
