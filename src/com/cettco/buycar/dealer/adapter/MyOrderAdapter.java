@@ -105,11 +105,11 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 		// } else
 		if (entity.getState().equals("qualified")) {
 			holder.stateTextView.setText("等待抢单");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#ccff99"));
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#006600"));
 		} else if (entity.getState().equals("taken")
 				&& entity.getBider().equals("you")) {
 			holder.stateTextView.setText("以抢单,待提交详情");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF6666"));
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#66cc66"));
 		} else if (entity.getState().equals("taken")
 				&& !entity.getBider().equals("you")) {
 			holder.stateTextView.setText("已被别人抢单");
@@ -127,6 +127,9 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 			holder.stateLayout.setBackgroundColor(Color.parseColor("#0099cc"));
 		} else if (entity.getState().equals("final_deal_closed")) {
 			holder.stateTextView.setText("最终成交");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
+		}else if (entity.getState().equals("bid_closed")) {
+			holder.stateTextView.setText("订单关闭");
 			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
 		}
 		return convertView;

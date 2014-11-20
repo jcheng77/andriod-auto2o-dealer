@@ -75,14 +75,14 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="#cc6600" >
+                android:background="#ff0033" >
 
                 <TextView
                     android:id="@+id/order_detail_status_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="状态:等待4s店接受出价"
+                    android:text=""
                     android:textColor="@color/white" />
             </LinearLayout>
 
@@ -104,13 +104,13 @@
                     android:id="@+id/order_detail_brandmakermodel_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RAV4" />
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/order_detail_trim_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2.0L cvt 都市版" />
+                    android:text="" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                         android:id="@+id/order_detail_myprice_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10000"
+                        android:text=""
                         android:textColor="@color/orange" />
                 </LinearLayout>
             </LinearLayout>

@@ -407,6 +407,15 @@ public class OrderDetailActivity extends Activity {
 			trimTextView.setText(name_array[3]);
 			colorTextView.setText(name_array[4]);
 		}
+		if(detailEntity.getPickup_time().equals("0")){
+			pickupTimeTextView.setText("7天");
+		}else if(detailEntity.getPickup_time().equals("1")){
+			pickupTimeTextView.setText("14天");
+		}else if(detailEntity.getPickup_time().equals("2")){
+			pickupTimeTextView.setText("21天后");
+		}else{
+			pickupTimeTextView.setText("");
+		}
 		pickupTimeTextView.setText(detailEntity.getPickup_time());
 		locationTextView.setText(detailEntity.getLicense_location());
 		if(detailEntity.getGot_licence().equals("0")){

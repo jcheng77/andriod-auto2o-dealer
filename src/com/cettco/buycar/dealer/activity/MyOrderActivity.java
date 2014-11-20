@@ -191,8 +191,13 @@ public class MyOrderActivity extends Activity {
 				}.getType();
 				List<OrderItemEntity> tmpEntities = new Gson().fromJson(result, listType);
 				if(tmpEntities!=null){
-					global_page=global_page+1;
-					list.addAll(tmpEntities);
+					if(page==1){
+						list = tmpEntities;
+					}else{
+						global_page=global_page+1;
+						list.addAll(tmpEntities);
+					}
+					
 				}
 				
 				Message message = new Message();
