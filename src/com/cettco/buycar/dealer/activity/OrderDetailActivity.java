@@ -19,6 +19,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -71,6 +72,7 @@ public class OrderDetailActivity extends Activity {
 	private TextView trimTextView;
 
 	private TextView titleTextView;
+	private TextView pricetTextView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -78,6 +80,7 @@ public class OrderDetailActivity extends Activity {
 		setContentView(R.layout.activity_order_detail);
 		titleTextView = (TextView)findViewById(R.id.title_text);
 		titleTextView.setText("订单详情");
+		pricetTextView = (TextView)findViewById(R.id.order_detail_myprice_textview);
 		submitButton = (Button) findViewById(R.id.order_detail_submit_btn);
 		submitButton.setOnClickListener(submitBtnClickListener);
 		accpetButton = (Button) findViewById(R.id.order_detail_accept_btn);
@@ -94,10 +97,14 @@ public class OrderDetailActivity extends Activity {
 		bidLayout.setVisibility(View.GONE);
 		
 		insurancEditText =(EditText)findViewById(R.id.module_bid_insurance_edittext);
+		insurancEditText.setOnFocusChangeListener(editOnFocusChangeListener);
 		//vechileTaxEditText = (EditText)findViewById(R.id.module_bid_vehicle_tax_edittext);
 		purchaseEditText = (EditText)findViewById(R.id.module_bid_purchase_tax_edittext);
+		purchaseEditText.setOnFocusChangeListener(editOnFocusChangeListener);
 		licenseFeEditText = (EditText)findViewById(R.id.module_bid_license_fee_edittext);
+		licenseFeEditText.setOnFocusChangeListener(editOnFocusChangeListener);
 		miscFeEditText = (EditText)findViewById(R.id.module_bid_mis_fee_edittext);
+		miscFeEditText.setOnFocusChangeListener(editOnFocusChangeListener);
 		priceEditText = (EditText)findViewById(R.id.module_bid_price_edittext);
 		descriptionEditText = (EditText)findViewById(R.id.module_bid_description_edittext);
 		
@@ -114,6 +121,21 @@ public class OrderDetailActivity extends Activity {
 		getData();
 	}
 
+	protected OnFocusChangeListener editOnFocusChangeListener = new OnFocusChangeListener() {
+		
+		@Override
+		public void onFocusChange(View arg0, boolean arg1) {
+			// TODO Auto-generated method stub
+			int curPrice=(int) Double.parseDouble(detailEntity.getPrice());
+			//int curPrice = Integer.valueOf(detailEntity.getPrice()).intValue();
+			int insurancePrice = Integer.valueOf(insurancEditText.getText().toString()).intValue();
+			//private EditText vechileTaxEditText;
+			int purchasePrice=Integer.valueOf(purchaseEditText.getText().toString()).intValue();
+			int licensePrice=Integer.valueOf(licenseFeEditText.getText().toString()).intValue();
+			int miscFeePrice=Integer.valueOf(miscFeEditText.getText().toString()).intValue();
+			priceEditText.setText(String.valueOf(curPrice+insurancePrice+purchasePrice+licensePrice+miscFeePrice));
+		}
+	};
 	protected OnClickListener acceptBtnClickListener = new OnClickListener() {
 
 		@Override
@@ -137,7 +159,7 @@ public class OrderDetailActivity extends Activity {
 	protected void getData() {
 		// String url = GlobalData.getBaseUrl() + "/cars/list.json";
 		// httpCache.clear();
-		String url = GlobalData.getBaseUrl() + "/tenders/" + id
+		String url = GlobalData.getBaseUrl() + "/tenders/" + bargain_id
 				+ "/show_bargain.json";
 		System.out.println("url:" + url);
 		Gson gson = new Gson();
@@ -243,9 +265,10 @@ public class OrderDetailActivity extends Activity {
 		String miscFee = miscFeEditText.getText().toString();
 		String price = priceEditText.getText().toString();
 		String description = descriptionEditText.getText().toString();
-		if(insurance.equals("")||purchaseTax.equals("")||licenseFee.equals("")||miscFee.equals("")||price.equals("")||description.equals("")){
+		if(insurance.equals("")||purchaseTax.equals("")||licenseFee.equals("")||miscFee.equals("")||price.equals("")){
 			Toast toast = Toast.makeText(this, "有未填写数据", Toast.LENGTH_SHORT);
 			toast.show();
+			return;
 		}
 		JSONObject bidJson = new JSONObject();
 		JSONObject json = new JSONObject();
@@ -272,10 +295,10 @@ public class OrderDetailActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//HttpConnection.getClient().re
 		HttpConnection.getClient().addHeader("x-http-method-override","PATCH");
 		HttpConnection.getClient().addHeader("Cookie",
 				cookieName + "=" + cookieStr);
-		// HttpConnection.setCookie(getApplicationContext());
 		progressLayout.setVisibility(View.VISIBLE);
 		HttpConnection.post(this, url, null, entity,  "application/json;charset=utf-8",new AsyncHttpResponseHandler() {
 
@@ -355,6 +378,7 @@ public class OrderDetailActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		HttpConnection.getClient().removeHeader("x-http-method-override");
 		HttpConnection.getClient().addHeader("Cookie",
 				cookieName + "=" + cookieStr);
 		// HttpConnection.setCookie(getApplicationContext());
@@ -367,6 +391,7 @@ public class OrderDetailActivity extends Activity {
 					public void onFailure(int arg0, Header[] arg1, byte[] arg2,
 							Throwable arg3) {
 						// TODO Auto-generated method stub
+						System.out.println("header :"+arg0);
 						progressLayout.setVisibility(View.GONE);
 						System.out.println("fail");
 						Message message = new Message();
@@ -378,6 +403,7 @@ public class OrderDetailActivity extends Activity {
 					public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
 						// TODO Auto-generated method stub
 						progressLayout.setVisibility(View.GONE);
+						System.out.println("header :"+arg0);
 						try {
 							String result = new String(arg2, "UTF-8");
 							System.out.println("order detail submit:" + result);
@@ -407,6 +433,8 @@ public class OrderDetailActivity extends Activity {
 			trimTextView.setText(name_array[3]);
 			colorTextView.setText(name_array[4]);
 		}
+		priceEditText.setText(detailEntity.getPrice());
+		pricetTextView.setText(detailEntity.getPrice());
 		if(detailEntity.getPickup_time().equals("0")){
 			pickupTimeTextView.setText("7天");
 		}else if(detailEntity.getPickup_time().equals("1")){
@@ -416,7 +444,6 @@ public class OrderDetailActivity extends Activity {
 		}else{
 			pickupTimeTextView.setText("");
 		}
-		pickupTimeTextView.setText(detailEntity.getPickup_time());
 		locationTextView.setText(detailEntity.getLicense_location());
 		if(detailEntity.getGot_licence().equals("0")){
 			gotLicenseTextView.setText("无");
@@ -477,7 +504,11 @@ public class OrderDetailActivity extends Activity {
 				toast4.show();
 				accpetButton.setVisibility(View.GONE);
 				submitButton.setVisibility(View.GONE);
-				getData();
+				Intent intent = new Intent();
+				intent.setClass(OrderDetailActivity.this, MyOrderActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				OrderDetailActivity.this.startActivity(intent);
+				//getData();
 				break;
 			case 5:
 				Toast toast5 = Toast.makeText(OrderDetailActivity.this, "提交详情失败",

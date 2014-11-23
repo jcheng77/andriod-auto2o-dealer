@@ -119,15 +119,19 @@ public class SignInActivity extends Activity{
 					}
 					System.out.println("response:"+response);
 					progressLayout.setVisibility(View.GONE);
+					String phone = null;
 					String id=null;
 					try {
 						 id = response.getString("id");
+						 phone = response.getString("phone");
+						 
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}					
 					UserUtil.login(SignInActivity.this);
 					UserUtil.setUserId(SignInActivity.this, id);
+					UserUtil.setPhone(SignInActivity.this, phone);
 					Toast toast = Toast.makeText(SignInActivity.this, "登录成功", Toast.LENGTH_SHORT);
 					toast.show();
 					SignInActivity.this.finish();

@@ -22,7 +22,6 @@
             android:textColor="@color/orange" />
 
         <EditText
-            android:inputType="number"
             android:id="@+id/module_bid_insurance_edittext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +30,10 @@
             android:layout_marginRight="20dp"
             android:ems="10"
             android:hint="输入"
-            android:singleLine="true" />
+            android:inputType="number"
+            android:singleLine="true"
+            android:text="0" />
+
     </LinearLayout>
 
     <!-- <LinearLayout
@@ -79,6 +81,7 @@
             android:textColor="@color/orange" />
 
         <EditText
+            android:text="0"
             android:inputType="number"
             android:id="@+id/module_bid_purchase_tax_edittext"
             android:layout_width="wrap_content"
@@ -108,6 +111,7 @@
             android:textColor="@color/orange" />
 
         <EditText
+            android:text="0"
             android:inputType="number"
             android:id="@+id/module_bid_license_fee_edittext"
             android:layout_width="wrap_content"
@@ -137,6 +141,7 @@
             android:textColor="@color/orange" />
 
         <EditText
+            android:text="0"
             android:inputType="number"
             android:id="@+id/module_bid_mis_fee_edittext"
             android:layout_width="wrap_content"
@@ -166,6 +171,7 @@
             android:textColor="@color/orange" />
 
         <EditText
+            android:focusable="false"
             android:inputType="number"
             android:id="@+id/module_bid_price_edittext"
             android:layout_width="wrap_content"

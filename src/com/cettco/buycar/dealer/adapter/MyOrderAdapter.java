@@ -37,7 +37,8 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		if(list==null||list.size()==0)return 1;
+		if (list == null || list.size() == 0)
+			return 1;
 		return list.size();
 	}
 
@@ -63,16 +64,16 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 					.findViewById(R.id.my_order_status_layout);
 			holder.imageView = (ImageView) convertView
 					.findViewById(R.id.my_order_imageview);
-			holder.hasdataLayout = (LinearLayout)convertView
+			holder.hasdataLayout = (LinearLayout) convertView
 					.findViewById(R.id.my_order_has_data_layout);
-			holder.nodataLayout = (LinearLayout)convertView
+			holder.nodataLayout = (LinearLayout) convertView
 					.findViewById(R.id.my_order_no_data_layout);
 			convertView.setTag(holder);
 			;
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		if(list==null||list.size()==0){
+		if (list == null || list.size() == 0) {
 			holder.hasdataLayout.setVisibility(View.GONE);
 			holder.nodataLayout.setVisibility(View.VISIBLE);
 			return convertView;
@@ -81,9 +82,9 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 		holder.nodataLayout.setVisibility(View.GONE);
 		OrderItemEntity entity = list.get(position);
 		// System.out.println(entity.getPic_url());
-		System.out.println("model:"+entity.getModel());
+		System.out.println("model:" + entity.getModel());
 		String[] name_array = entity.getModel().split(" : ");
-		System.out.println("model:"+entity.getModel());
+		System.out.println("model:" + entity.getModel());
 		// System.out.println(name_array);
 		if (name_array.length == 5) {
 			holder.brandMakerModelTextView.setText(name_array[0] + " "
@@ -105,11 +106,11 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 		// } else
 		if (entity.getState().equals("qualified")) {
 			holder.stateTextView.setText("等待抢单");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#006600"));
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF6201"));
 		} else if (entity.getState().equals("taken")
 				&& entity.getBider().equals("you")) {
 			holder.stateTextView.setText("以抢单,待提交详情");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#66cc66"));
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF6201"));
 		} else if (entity.getState().equals("taken")
 				&& !entity.getBider().equals("you")) {
 			holder.stateTextView.setText("已被别人抢单");
@@ -120,17 +121,22 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 		} else if (entity.getState().equals("deal_made")
 				&& entity.getBider().equals("you")) {
 			holder.stateTextView.setText("抢单成功");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#0099cc"));
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF6201"));
 		} else if (entity.getState().equals("deal_made")
 				&& !entity.getBider().equals("you")) {
 			holder.stateTextView.setText("其他人抢单成功");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#0099cc"));
-		} else if (entity.getState().equals("final_deal_closed")) {
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#0c8398"));
+		} else if (entity.getState().equals("final_deal_closed")
+				&& entity.getBider().equals("you")) {
 			holder.stateTextView.setText("最终成交");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
-		}else if (entity.getState().equals("bid_closed")) {
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#cccccc"));
+		} else if (entity.getState().equals("final_deal_closed")
+				&& !entity.getBider().equals("you")) {
+			holder.stateTextView.setText("其他店最终成交");
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#0c8398"));
+		} else if (entity.getState().equals("bid_closed")) {
 			holder.stateTextView.setText("订单关闭");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#FF0033"));
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#cccccc"));
 		}
 		return convertView;
 	}

@@ -46,14 +46,14 @@ public class WelcomeFragment extends Fragment {
 		autoScrollViewPager.setCycle(true);
 		arrayList = new ArrayList<ImageView>();
 		adapter = new WelcomePagerAdapter(arrayList);
-		for(int i=0;i<5;i++){
+		for(int i=0;i<1;i++){
 			ImageView view = new ImageView(getActivity());
-			view.setBackgroundResource(R.drawable.welcome);
+			view.setBackgroundResource(R.drawable.dealer_icon);
 			arrayList.add(view);
 		}
 		autoScrollViewPager.setAdapter(adapter);
 		adapter.notifyDataSetChanged();
-		autoScrollViewPager.startAutoScroll();
+		//autoScrollViewPager.startAutoScroll();
 		return fragmentView;
 	}
 	protected class WelcomePagerAdapter extends PagerAdapter{

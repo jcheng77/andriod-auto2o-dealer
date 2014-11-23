@@ -270,7 +270,7 @@ public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
 
 		Intent intent = new Intent();
 		intent.setClass(context.getApplicationContext(), MainActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.getApplicationContext().startActivity(intent);
 	}
 
@@ -346,10 +346,6 @@ public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
 						super.onSuccess(statusCode, headers, response);
 						System.out.println("id success");
 						System.out.println("id statusCode:" + statusCode);
-
-						for (int i = 0; i < headers.length; i++) {
-							System.out.println(headers[0]);
-						}
 						System.out.println("id response:" + response);
 
 					}
