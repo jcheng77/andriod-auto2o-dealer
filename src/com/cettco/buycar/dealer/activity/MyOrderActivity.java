@@ -149,6 +149,14 @@ public class MyOrderActivity extends Activity {
 				intent.putExtra("id", list.get(position).getId());
 				intent.putExtra("bid_id", list.get(position).getBid_id());
 				startActivity(intent);
+			}else if (state.equals("final_deal_closed") && bider.equals("you")) {
+				Intent intent = new Intent();
+				intent.setClass(MyOrderActivity.this, OrderDetailActivity.class);
+				intent.putExtra("bargain_id", list.get(position)
+						.getBargain_id());
+				intent.putExtra("id", list.get(position).getId());
+				intent.putExtra("bid_id", list.get(position).getBid_id());
+				startActivity(intent);
 			}
 
 		}

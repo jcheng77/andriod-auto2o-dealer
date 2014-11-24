@@ -91,7 +91,7 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 					+ name_array[1] + " " + name_array[2]);
 			holder.trimTextView.setText(name_array[3]);
 		}
-		holder.pricetextView.setText(entity.getPrice());
+		holder.pricetextView.setText(entity.getPrice()+"万");
 		MyApplication.IMAGE_CACHE.get(entity.getPic_url(), holder.imageView);
 		System.out.println("state:" + entity.getState());
 		// if (entity.getState().equals("viewed")) {
@@ -129,14 +129,14 @@ public class MyOrderAdapter extends ArrayAdapter<OrderItemEntity> {
 		} else if (entity.getState().equals("final_deal_closed")
 				&& entity.getBider().equals("you")) {
 			holder.stateTextView.setText("最终成交");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#cccccc"));
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#939393"));
 		} else if (entity.getState().equals("final_deal_closed")
 				&& !entity.getBider().equals("you")) {
 			holder.stateTextView.setText("其他店最终成交");
 			holder.stateLayout.setBackgroundColor(Color.parseColor("#0c8398"));
 		} else if (entity.getState().equals("bid_closed")) {
 			holder.stateTextView.setText("订单关闭");
-			holder.stateLayout.setBackgroundColor(Color.parseColor("#cccccc"));
+			holder.stateLayout.setBackgroundColor(Color.parseColor("#939393"));
 		}
 		return convertView;
 	}

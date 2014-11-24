@@ -478,6 +478,11 @@ public class OrderDetailActivity extends Activity {
 			submitButton.setVisibility(View.GONE);
 			accpetButton.setVisibility(View.GONE);
 			bidLayout.setVisibility(View.GONE);
+		}else if (state.equals("final_deal_closed")) {
+			stateTextView.setText("最终成交");
+			submitButton.setVisibility(View.GONE);
+			accpetButton.setVisibility(View.GONE);
+			bidLayout.setVisibility(View.GONE);
 		}
 	}
 
