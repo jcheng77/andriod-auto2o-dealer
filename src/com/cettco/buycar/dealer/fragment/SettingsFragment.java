@@ -40,7 +40,7 @@ public class SettingsFragment extends Fragment {
 	private View fragmentView;
 	private LinearLayout logoutLayout;
 	private Button logouButton;
-	private RelativeLayout progressLayout;
+	//private RelativeLayout progressLayout;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -49,8 +49,8 @@ public class SettingsFragment extends Fragment {
 		// return super.onCreateView(inflater, container, savedInstanceState);
 		fragmentView = inflater.inflate(R.layout.fragment_settings, container,
 				false);
-		progressLayout = (RelativeLayout) fragmentView
-				.findViewById(R.id.progressbar_relativeLayout);
+//		progressLayout = (RelativeLayout) fragmentView
+//				.findViewById(R.id.progressbar_relativeLayout);
 		loginLayout = (RelativeLayout) fragmentView
 				.findViewById(R.id.settings_login_layout);
 		loginLayout.setOnClickListener(loginClickListener);
@@ -82,7 +82,7 @@ public class SettingsFragment extends Fragment {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			progressLayout.setVisibility(View.VISIBLE);
+			//progressLayout.setVisibility(View.VISIBLE);
 			HttpConnection.getClient().removeHeader("Cookie");
 			UserUtil.logout(getActivity());
 			PersistentCookieStore myCookieStore = new PersistentCookieStore(
