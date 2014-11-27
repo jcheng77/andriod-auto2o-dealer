@@ -285,7 +285,7 @@ public class MyCarFragment extends Fragment {
 				Message message = new Message();
 				message.what = 1;
 				mHandler.sendMessage(message);
-			} else if (code == 401) {
+			} else {
 				Message message = new Message();
 				message.what = 2;
 				mHandler.sendMessage(message);
