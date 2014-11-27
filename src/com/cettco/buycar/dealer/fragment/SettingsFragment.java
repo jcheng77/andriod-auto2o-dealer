@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,6 +41,7 @@ public class SettingsFragment extends Fragment {
 	private View fragmentView;
 	private LinearLayout logoutLayout;
 	private Button logouButton;
+	private ImageView loginArrowImageView;
 	//private RelativeLayout progressLayout;
 
 	@Override
@@ -51,6 +53,7 @@ public class SettingsFragment extends Fragment {
 				false);
 //		progressLayout = (RelativeLayout) fragmentView
 //				.findViewById(R.id.progressbar_relativeLayout);
+		loginArrowImageView = (ImageView)fragmentView.findViewById(R.id.settings_login_arrow_imageview);
 		loginLayout = (RelativeLayout) fragmentView
 				.findViewById(R.id.settings_login_layout);
 		loginLayout.setOnClickListener(loginClickListener);
@@ -71,6 +74,7 @@ public class SettingsFragment extends Fragment {
 		if (UserUtil.isLogin(getActivity())) {
 			loginTextView.setText(UserUtil.getPhone(getActivity()));
 			logoutLayout.setVisibility(View.VISIBLE);
+			loginArrowImageView.setVisibility(View.GONE);
 		} else {
 			loginTextView.setText("请登录");
 			logoutLayout.setVisibility(View.GONE);
