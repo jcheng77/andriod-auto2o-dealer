@@ -14,6 +14,7 @@ import com.cettco.buycar.dealer.entity.User;
 import com.cettco.buycar.dealer.entity.UserEntity;
 import com.cettco.buycar.dealer.utils.GlobalData;
 import com.cettco.buycar.dealer.utils.HttpConnection;
+import com.cettco.buycar.dealer.utils.UpdateManager;
 import com.cettco.buycar.dealer.utils.UserUtil;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -43,6 +44,7 @@ public class SettingsFragment extends Fragment {
 	private Button logouButton;
 	private ImageView loginArrowImageView;
 	//private RelativeLayout progressLayout;
+	private RelativeLayout checkUpdateLayout;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -64,6 +66,9 @@ public class SettingsFragment extends Fragment {
 				.findViewById(R.id.logout_layout);
 		logouButton = (Button) fragmentView.findViewById(R.id.logout_button);
 		logouButton.setOnClickListener(logoutClickListener);
+		
+		checkUpdateLayout = (RelativeLayout)fragmentView.findViewById(R.id.settings_checkupdate_linearlayout);
+		checkUpdateLayout.setOnClickListener(checkUpdateClickListener);
 		return fragmentView;
 	}
 
@@ -81,6 +86,15 @@ public class SettingsFragment extends Fragment {
 		}
 	}
 
+	private OnClickListener checkUpdateClickListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View arg0) {
+			// TODO Auto-generated method stub
+			UpdateManager manager = new UpdateManager(getActivity());
+			manager.checkUpdate();
+		}
+	};
 	private OnClickListener logoutClickListener = new OnClickListener() {
 
 		@Override

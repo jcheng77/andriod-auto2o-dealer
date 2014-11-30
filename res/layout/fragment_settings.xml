@@ -5,6 +5,7 @@
     android:background="@color/light_gray" >
 
     <LinearLayout
+        android:id="@+id/settings_login_linearlayou"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/light_gray"
@@ -31,6 +32,38 @@
 
             <ImageView
                 android:id="@+id/settings_login_arrow_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_action_next_item" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/settings_login_linearlayou"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/settings_checkupdate_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:background="@color/white" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="检测更新"
+                android:textSize="20sp" />
+
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

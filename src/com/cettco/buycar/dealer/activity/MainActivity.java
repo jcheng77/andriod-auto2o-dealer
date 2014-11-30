@@ -10,6 +10,7 @@ import com.cettco.buycar.dealer.fragment.MyCarFragment;
 import com.cettco.buycar.dealer.fragment.SettingsFragment;
 import com.cettco.buycar.dealer.fragment.WelcomeFragment;
 import com.cettco.buycar.dealer.utils.HttpConnection;
+import com.cettco.buycar.dealer.utils.UpdateManager;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import android.app.Activity;
@@ -93,6 +94,8 @@ public class MainActivity extends Activity {
 		default:
 			break;
 		}
+		UpdateManager manager = new UpdateManager(this);
+		manager.checkUpdate();
 
 	}
 	@Override
