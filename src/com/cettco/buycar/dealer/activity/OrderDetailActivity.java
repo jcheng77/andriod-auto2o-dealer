@@ -579,7 +579,11 @@ public class OrderDetailActivity extends Activity {
 				toast6.show();
 				accpetButton.setVisibility(View.GONE);
 				submitButton.setVisibility(View.GONE);
-				getData();
+				Intent intent6 = new Intent();
+				intent6.setClass(OrderDetailActivity.this, MyOrderActivity.class);
+				intent6.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				OrderDetailActivity.this.startActivity(intent6);
+				//getData();
 				break;
 			}
 		};
