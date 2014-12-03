@@ -125,7 +125,10 @@ public class MyOrderActivity extends Activity {
 			OrderItemEntity orderItemEntity = list.get(position);
 			String state = orderItemEntity.getState();
 			String bider = orderItemEntity.getBider();
-			if (state.equals("qualified")) {
+			if (state.equals("canceled")) {
+				return;
+			}
+			else if (state.equals("qualified")) {
 				Intent intent = new Intent();
 				intent.setClass(MyOrderActivity.this, OrderDetailActivity.class);
 				intent.putExtra("bargain_id", list.get(position)
@@ -148,6 +151,8 @@ public class MyOrderActivity extends Activity {
 						.getBargain_id());
 				intent.putExtra("id", list.get(position).getId());
 				intent.putExtra("bid_id", list.get(position).getBid_id());
+				intent.putExtra("user_name", list.get(position).getUser().getUser_name());
+				intent.putExtra("phone", list.get(position).getUser().getPhone());
 				startActivity(intent);
 			}else if (state.equals("final_deal_closed") && bider.equals("you")) {
 				Intent intent = new Intent();
@@ -156,6 +161,8 @@ public class MyOrderActivity extends Activity {
 						.getBargain_id());
 				intent.putExtra("id", list.get(position).getId());
 				intent.putExtra("bid_id", list.get(position).getBid_id());
+				intent.putExtra("user_name", list.get(position).getUser().getUser_name());
+				intent.putExtra("phone", list.get(position).getUser().getPhone());
 				startActivity(intent);
 			}
 

@@ -46,8 +46,8 @@ public class SignInActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_signin);
 		//getActionBar().hide();
-		TextView signUpTextView = (TextView)findViewById(R.id.signUpText);
-		signUpTextView.setOnClickListener(signUpClickListener);
+		//TextView signUpTextView = (TextView)findViewById(R.id.signUpText);
+		//signUpTextView.setOnClickListener(signUpClickListener);
 		TextView findpwdteTextView = (TextView)findViewById(R.id.findpwd_text);
 		findpwdteTextView.setOnClickListener(findpwdclClickListener);
 		

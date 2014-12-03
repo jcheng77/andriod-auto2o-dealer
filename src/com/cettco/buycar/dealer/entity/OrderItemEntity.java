@@ -31,6 +31,13 @@ public class OrderItemEntity {
 	private Date time;
 	@DatabaseField
 	private String pic_url;
+	private User user;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public String getBid_id() {
 		return bid_id;
 	}

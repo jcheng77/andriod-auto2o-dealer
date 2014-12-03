@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.Header;
 import org.apache.http.cookie.Cookie;
@@ -14,6 +16,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -73,6 +76,11 @@ public class OrderDetailActivity extends Activity {
 
 	private TextView titleTextView;
 	private TextView pricetTextView;
+	
+	private TextView userNameTextView;
+	private TextView userPhoneTextView;
+	private LinearLayout userInfoLayout;
+	private LinearLayout userPhonelLayout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -118,9 +126,33 @@ public class OrderDetailActivity extends Activity {
 		brandMakerModelTextView=(TextView)findViewById(R.id.order_detail_brandmakermodel_textview);
 		trimTextView=(TextView)findViewById(R.id.order_detail_trim_textview);
 		carImageView = (ImageView)findViewById(R.id.order_detail_car_img);
+		
+		//user info
+		userNameTextView = (TextView)findViewById(R.id.order_detail_name_textview);
+		userPhoneTextView=(TextView)findViewById(R.id.order_detail_phone_textview);
+		userInfoLayout=(LinearLayout)findViewById(R.id.order_detail_userinfo_linearlayout);
+		userPhonelLayout = (LinearLayout)findViewById(R.id.order_detail_phone_layout);
+		userPhonelLayout.setOnClickListener(phoneClickListener);
 		getData();
 	}
 
+	private OnClickListener phoneClickListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			String num=userPhoneTextView.getText().toString();
+			Pattern p = Pattern.compile("\\d+?");
+			Matcher match = p.matcher(num);
+			//正则验证输入的是否为数字
+			if(match.matches()){
+				Intent intent=new Intent("android.intent.action.CALL",Uri.parse("tel:"+num));
+				startActivity(intent);
+			}else{
+				Toast.makeText(OrderDetailActivity.this, "号码不对",Toast.LENGTH_LONG).show();
+			}
+		}
+	};
 	protected OnFocusChangeListener editOnFocusChangeListener = new OnFocusChangeListener() {
 		
 		@Override
@@ -468,17 +500,30 @@ public class OrderDetailActivity extends Activity {
 			submitButton.setVisibility(View.GONE);
 			accpetButton.setVisibility(View.VISIBLE);
 			bidLayout.setVisibility(View.GONE);
-		} else if (state.equals("taken")) {
+		} else if (state.equals("canceled")) {
+			stateTextView.setText("订单取消");
+			// stateTextView.setBackgroundColor(Color.parseColor("#FF6600"));
+			submitButton.setVisibility(View.GONE);
+			accpetButton.setVisibility(View.VISIBLE);
+			bidLayout.setVisibility(View.GONE);
+		} 
+		else if (state.equals("taken")) {
 			stateTextView.setText("待提交详细信息");
 			submitButton.setVisibility(View.VISIBLE);
 			accpetButton.setVisibility(View.GONE);
 			bidLayout.setVisibility(View.VISIBLE);
 		} else if (state.equals("deal_made")) {
+			userInfoLayout.setVisibility(View.VISIBLE);
+			userNameTextView.setText(getIntent().getStringExtra("user_name"));
+			userPhoneTextView.setText(getIntent().getStringExtra("phone"));
 			stateTextView.setText("接受订单成功");
 			submitButton.setVisibility(View.GONE);
 			accpetButton.setVisibility(View.GONE);
 			bidLayout.setVisibility(View.GONE);
 		}else if (state.equals("final_deal_closed")) {
+			userInfoLayout.setVisibility(View.VISIBLE);
+			userNameTextView.setText(getIntent().getStringExtra("user_name"));
+			userPhoneTextView.setText(getIntent().getStringExtra("phone"));
 			stateTextView.setText("最终成交");
 			submitButton.setVisibility(View.GONE);
 			accpetButton.setVisibility(View.GONE);

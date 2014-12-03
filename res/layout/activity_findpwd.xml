@@ -4,8 +4,11 @@
     android:background="@color/white"
     >
     
-    <include layout="@layout/actionbar"/>
+    <include 
+        android:id="@+id/findpwd_actionbar"
+        layout="@layout/actionbar"/>
     <LinearLayout
+        android:layout_below="@id/findpwd_actionbar"
         android:id="@+id/findpwd_logo_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
