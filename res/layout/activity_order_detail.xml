@@ -20,10 +20,50 @@
         android:progress="30"
         android:progressDrawable="@drawable/bar_color" />
 
+    <LinearLayout
+        android:id="@+id/order_detail_accpet_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/order_detail_progressbar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/order_detail_submit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/beginbuycar_btn_style"
+            android:paddingBottom="8dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="8dp"
+            android:text="提交数据"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/order_detail_accept_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/beginbuycar_btn_style"
+            android:paddingBottom="8dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="8dp"
+            android:text="接受报价"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/order_detail_progressbar" >
+        android:layout_below="@id/order_detail_accpet_layout" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,42 +71,6 @@
             android:layout_marginLeft="10dp"
             android:background="@color/white"
             android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:gravity="center" >
-
-                <Button
-                    android:id="@+id/order_detail_submit_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/beginbuycar_btn_style"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="25dp"
-                    android:paddingRight="25dp"
-                    android:paddingTop="8dp"
-                    android:text="提交数据"
-                    android:textSize="20sp"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/order_detail_accept_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/beginbuycar_btn_style"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="25dp"
-                    android:paddingRight="25dp"
-                    android:paddingTop="8dp"
-                    android:text="接受报价"
-                    android:textSize="20sp"
-                    android:visibility="gone" />
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/order_detail_state_layout"
@@ -180,9 +184,10 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="姓名" />
+                                android:text="姓名:" />
 
                             <TextView
+                                android:layout_marginLeft="10dp"
                                 android:id="@+id/order_detail_name_textview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -355,5 +360,9 @@
     </ScrollView>
 
     <include layout="@layout/item_progressbar" />
+
+    <include layout="@layout/item_loading" />
+
+    <include layout="@layout/item_loading_failure" />
 
 </RelativeLayout>

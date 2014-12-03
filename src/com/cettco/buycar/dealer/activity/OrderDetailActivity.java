@@ -53,6 +53,8 @@ public class OrderDetailActivity extends Activity {
 	private String bid_id;
 	private ProgressBar progressBar;
 	private RelativeLayout progressLayout;
+	private RelativeLayout loadingLayout;
+	private RelativeLayout loadingFailureLayout;
 	private OrderDetailEntity detailEntity;
 	private LinearLayout stateLayout;
 	private LinearLayout bidLayout;
@@ -100,6 +102,8 @@ public class OrderDetailActivity extends Activity {
 		bid_id = getIntent().getStringExtra("bid_id");
 		progressBar = (ProgressBar) findViewById(R.id.order_detail_progressbar);
 		progressLayout = (RelativeLayout) findViewById(R.id.progressbar_relativeLayout);
+		loadingLayout = (RelativeLayout)findViewById(R.id.loading_relativeLayout);
+		loadingFailureLayout=(RelativeLayout)findViewById(R.id.loading_failure_relativeLayout);
 		stateLayout = (LinearLayout) findViewById(R.id.order_detail_state_layout);
 		bidLayout = (LinearLayout)findViewById(R.id.bids_layout);
 		bidLayout.setVisibility(View.GONE);
@@ -218,6 +222,7 @@ public class OrderDetailActivity extends Activity {
 			System.out.println("cookie null");
 			return;
 		}
+		loadingLayout.setVisibility(View.VISIBLE);
 		HttpConnection.getClient().addHeader("Cookie",
 				cookieName + "=" + cookieStr);
 		// HttpConnection.setCookie(getApplicationContext());
@@ -228,6 +233,8 @@ public class OrderDetailActivity extends Activity {
 			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
 					Throwable arg3) {
 				// TODO Auto-generated method stub
+				loadingLayout.setVisibility(View.GONE);
+				loadingFailureLayout.setVisibility(View.VISIBLE);
 				progressBar.setProgress(60);
 				progressBar.setProgress(100);
 				progressBar.setVisibility(View.GONE);
@@ -240,6 +247,7 @@ public class OrderDetailActivity extends Activity {
 			@Override
 			public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
 				// TODO Auto-generated method stub
+				loadingLayout.setVisibility(View.GONE);
 				progressBar.setProgress(60);
 				progressBar.setProgress(100);
 				progressBar.setVisibility(View.GONE);
