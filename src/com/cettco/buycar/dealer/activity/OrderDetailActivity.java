@@ -75,6 +75,7 @@ public class OrderDetailActivity extends Activity {
 	private ImageView carImageView;
 	private TextView brandMakerModelTextView;
 	private TextView trimTextView;
+	private TextView descriptionTextView;
 
 	private TextView titleTextView;
 	private TextView pricetTextView;
@@ -120,6 +121,7 @@ public class OrderDetailActivity extends Activity {
 		priceEditText = (EditText)findViewById(R.id.module_bid_price_edittext);
 		descriptionEditText = (EditText)findViewById(R.id.module_bid_description_edittext);
 		
+		
 		//stateLayout.setVisibility(View.GONE);
 		
 		colorTextView = (TextView)findViewById(R.id.order_detail_color_textview);
@@ -130,6 +132,7 @@ public class OrderDetailActivity extends Activity {
 		brandMakerModelTextView=(TextView)findViewById(R.id.order_detail_brandmakermodel_textview);
 		trimTextView=(TextView)findViewById(R.id.order_detail_trim_textview);
 		carImageView = (ImageView)findViewById(R.id.order_detail_car_img);
+		descriptionTextView =(TextView)findViewById(R.id.order_detail_description_textview);
 		
 		//user info
 		userNameTextView = (TextView)findViewById(R.id.order_detail_name_textview);
@@ -475,6 +478,7 @@ public class OrderDetailActivity extends Activity {
 		}
 		priceEditText.setText(detailEntity.getPrice());
 		pricetTextView.setText(detailEntity.getPrice());
+		descriptionTextView.setText(detailEntity.getDescription());
 		if(detailEntity.getPickup_time().equals("0")){
 			pickupTimeTextView.setText("7天");
 		}else if(detailEntity.getPickup_time().equals("1")){
