@@ -1,22 +1,14 @@
 package com.cettco.buycar.dealer.activity;
 
-import java.util.ArrayList;
-
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.cettco.buycar.dealer.R;
-import com.cettco.buycar.dealer.adapter.CarTrimViewPagerAdapter;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
-import android.view.View;
 
 public class SplashActivity extends Activity{
 

@@ -1,18 +1,13 @@
 package com.cettco.buycar.dealer.activity;
 
 
-import org.apache.http.Header;
-import org.json.JSONObject;
-
-
 import com.cettco.buycar.dealer.R;
 import com.cettco.buycar.dealer.fragment.MyCarFragment;
 import com.cettco.buycar.dealer.fragment.SettingsFragment;
 import com.cettco.buycar.dealer.fragment.WelcomeFragment;
-import com.cettco.buycar.dealer.utils.HttpConnection;
 import com.cettco.buycar.dealer.utils.UpdateManager;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.loopj.android.http.JsonHttpResponseHandler;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;

@@ -12,13 +12,10 @@ import com.cettco.buycar.dealer.entity.UserEntity;
 import com.cettco.buycar.dealer.utils.GlobalData;
 import com.cettco.buycar.dealer.utils.HttpConnection;
 import com.google.gson.Gson;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;

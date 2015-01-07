@@ -18,7 +18,9 @@
         <com.handmark.pulltorefresh.library.PullToRefreshListView
             android:id="@+id/orders_pull_to_refresh_listview"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:background="@color/light_gray"
+            android:divider="@color/gray" />
     </LinearLayout>
 
     <LinearLayout

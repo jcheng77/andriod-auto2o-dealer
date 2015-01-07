@@ -127,7 +127,7 @@ public class OrderDetailActivity extends Activity {
 		colorTextView = (TextView)findViewById(R.id.order_detail_color_textview);
 		pickupTimeTextView=(TextView)findViewById(R.id.order_detail_pickup_time_textview);
 		locationTextView=(TextView)findViewById(R.id.order_detail_license_location_textview);
-		gotLicenseTextView=(TextView)findViewById(R.id.order_detail_got_license_textview);
+		gotLicenseTextView=(TextView)findViewById(R.id.order_detail_got_licence_textview);
 		loanOptionTextView=(TextView)findViewById(R.id.order_detail_loan_option_textview);
 		brandMakerModelTextView=(TextView)findViewById(R.id.order_detail_brandmakermodel_textview);
 		trimTextView=(TextView)findViewById(R.id.order_detail_trim_textview);
