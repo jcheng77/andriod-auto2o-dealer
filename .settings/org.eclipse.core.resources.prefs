@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//src/com/alipay/android/msp/Result.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/activity/AliPayActivity.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/activity/DealerMapActivity.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/activity/MainActivity.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/activity/MipcaActivityCapture.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/activity/OrderDetailActivity.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/activity/SelectCityActivity.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/activity/SignInActivity.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/adapter/CarTrimViewPagerAdapter.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/fragment/MyCarFragment.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/fragment/SettingsFragment.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/utils/GetLocation.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/utils/SFHCamera.java=UTF-8
+encoding//src/com/cettco/buycar/dealer/utils/db/DatabaseHelperOrder.java=UTF-8

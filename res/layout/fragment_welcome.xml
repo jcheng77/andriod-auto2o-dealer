@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
+                android:id="@+id/welcome_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0,1" >
+
+                <TableRow
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/welcome_row_divide_distance"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="@dimen/welcome_row_divide_distance" >
+
+                    <!--
+                    <LinearLayout
+                        android:id="@+id/fragment_welcome_orders_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_marginRight="@dimen/welcome_row_divide_distance"
+                        android:adjustViewBounds="true"
+                        android:background="#F27020"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:scaleType="fitCenter" >
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/order" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:text="购车订单"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                    -->
+
+                    <com.cettco.buycar.dealer.view.SquareView
+                        android:id="@+id/fragment_welcome_orders_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_column="0"
+                        android:layout_marginRight="@dimen/welcome_row_divide_distance"
+                        android:adjustViewBounds="true"
+                        android:background="#F27020"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="@dimen/welcome_icon_size"
+                            android:layout_height="@dimen/welcome_icon_size"
+                            android:layout_gravity="center"
+                            android:background="@drawable/order" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:text="购车订单"
+                            android:textColor="@color/white" />
+                    </com.cettco.buycar.dealer.view.SquareView>
+
+                    <com.cettco.buycar.dealer.view.SquareView
+                        android:id="@+id/fragment_welcome_appointment_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_column="1"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/welcome_row_divide_distance"
+                        android:background="#F0AB00"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="@dimen/welcome_icon_size"
+                            android:layout_height="@dimen/welcome_icon_size"
+                            android:layout_gravity="center"
+                            android:background="@drawable/appointment" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:text="预约保养"
+                            android:textColor="@color/white" />
+                    </com.cettco.buycar.dealer.view.SquareView>
+                </TableRow>
+
+                <TableRow
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/welcome_row_divide_distance"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="@dimen/welcome_row_divide_distance" >
+
+                    <com.cettco.buycar.dealer.view.SquareView
+                        android:id="@+id/fragment_welcome_complaint_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_column="0"
+                        android:gravity="center"
+                        android:layout_marginRight="@dimen/welcome_row_divide_distance"
+                        android:background="#999999"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="@dimen/welcome_icon_size"
+                            android:layout_height="@dimen/welcome_icon_size"
+                            android:layout_gravity="center"
+                            android:background="@drawable/review" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:text="我的投诉"
+                            android:textColor="@color/white" />
+                    </com.cettco.buycar.dealer.view.SquareView>
+
+                    <com.cettco.buycar.dealer.view.SquareView
+                        android:id="@+id/fragment_welcome_report_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_column="1"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/welcome_row_divide_distance"
+                        android:background="#009DE0"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="@dimen/welcome_icon_size"
+                            android:layout_height="@dimen/welcome_icon_size"
+                            android:layout_gravity="center"
+                            android:background="@drawable/report" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:text="我的报表"
+                            android:textColor="@color/white" />
+                    </com.cettco.buycar.dealer.view.SquareView>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
